@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#02457A</color>
+    <color name="colorPrimaryDark">#02457A</color>
+    <color name="colorAccent">#7C4DFF</color>
+
+    <color name="blue_grey_400">#78909C</color>
+    <color name="light_grey_400">#E6E6E6</color>
+    <color name="light_green_700">#689F38</color>
+    <color name="gray">#BFBFBF</color>
+    <color name="white">#FFFFFF</color>
+    <color name="blue">#4286f4</color>
+    <color name="red">#f44242</color>
+    <color name="yellow">#FFEB3B</color>
+
+    <color name="bgBottomNavigation">#3D85C6</color>
+    <color name="start">#aaff77</color>
+    <color name="pink">#ff99cc</color>
+    <color name="map">#99ccff</color>
+    <color name="orange">#fc913a</color>
+    <color name="black">#2b2727</color>
+    <color name="nav">#215670</color>
+    <color name="colortrendstart">#00b09b</color>
+    <color name="colortrendend">#ffbf3c</color>
+    <color name="divider">#d6d6d6</color>
+    <color name="blue1">#001B48</color>
+    <color name="blue2">#02457A</color>
+    <color name="address">#2F7092</color>
+    <color name="followers">#0D5D98</color>
+    <color name="headings">#3797CF</color>
+    <color name="solidCircle">#AAFFFFFF</color>
+    <color name="circleBorder">#50FFFFFF</color>
+    <color name="gradEnd">#67EFC8</color>
+    <color name="gradStart">#63C9FF</color>
+    <color name="followersBg">#65DCE5</color>
+    <color name="followingBg">#49BEFF</color>
+    <color name="grey">#E5E5E5</color>
+</resources>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/admin/AndroidStudioProjects/TaxiHelper/app/src/main/res/drawable-hdpi/ic_store_white_24dp.xml" value="0.13333333333333333" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/TaxiHelper/app/src/main/res/drawable-xxxhdpi/alertSleepy.xml" value="0.132" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/TaxiHelper/app/src/main/res/drawable-xxxhdpi/alert_sleepy.xml" value="0.1105" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/TaxiHelper/app/src/main/res/drawable/alert.xml" value="0.186" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/TaxiHelper/app/src/main/res/layout-land/activity_vision_live_preview.xml" value="0.152" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/TaxiHelper/app/src/main/res/layout-land/fragment_home.xml" value="0.10934744268077601" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/TaxiHelper/app/src/main/res/layout/activity_main.xml" value="0.176" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/TaxiHelper/app/src/main/res/layout/activity_note.xml" value="0.1" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/TaxiHelper/app/src/main/res/layout/activity_settings.xml" value="0.23802083333333332" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/TaxiHelper/app/src/main/res/layout/activity_trafficsign.xml" value="0.1" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/TaxiHelper/app/src/main/res/layout/activity_vision_live_preview.xml" value="0.10400000000000001" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/TaxiHelper/app/src/main/res/layout/activity_web.xml" value="0.23802083333333332" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/TaxiHelper/app/src/main/res/layout/course_rv_item.xml" value="0.1" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/TaxiHelper/app/src/main/res/layout/dialog.xml" value="0.18704710144927536" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/TaxiHelper/app/src/main/res/layout/dialogSleepy.xml" value="0.12135416666666667" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/TaxiHelper/app/src/main/res/layout/dialog_sleepy.xml" value="0.4" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/TaxiHelper/app/src/main/res/layout/fragment__anasayfa.xml" value="0.136" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/TaxiHelper/app/src/main/res/layout/fragment__cards.xml" value="0.23541666666666666" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/TaxiHelper/app/src/main/res/layout/fragment__gift.xml" value="0.23541666666666666" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/TaxiHelper/app/src/main/res/layout/fragment__profile.xml" value="0.23541666666666666" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/TaxiHelper/app/src/main/res/layout/fragment_home.xml" value="0.264" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/TaxiHelper/app/src/main/res/layout/fragment_profile.xml" value="0.20018115942028986" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/TaxiHelper/app/src/main/res/layout/fragment_setting.xml" value="0.20018115942028986" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/TaxiHelper/app/src/main/res/layout/realtime_info.xml" value="0.4" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/TaxiHelper/app/src/main/res/layout/settings_activity.xml" value="0.1" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/TaxiHelper/app/src/main/res/layout/settings_style.xml" value="0.20018115942028986" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/TaxiHelper/app/src/main/res/layout/speed_layout.xml" value="0.1" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/TaxiHelper/app/src/main/res/layout/splashscreen.xml" value="0.1171875" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/TaxiHelper/app/src/main/res/layout/test.xml" value="0.13177083333333334" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/TaxiHelper/app/src/main/res/layout/testanddelete.xml" value="0.176" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/TaxiHelper/app/src/main/res/menu/navigation.xml" value="0.23541666666666666" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/TaxiHelper/app/src/main/res/menu/search_menu.xml" value="0.1" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/TaxiHelper/app/src/main/res/xml/preference_live_preview_quickstart.xml" value="0.152" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/TaxiHelper/app/src/main/res/xml/root_preferences.xml" value="0.264" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/TaxiHelper/app/src/main/res/xml/settings.xml" value="0.8800000000000001" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/TaxiHelper/fancytoastlib/src/main/res/layout/fancytoast_layout.xml" value="0.1" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/ndt1/app/src/main/res/layout-land/activity_vision_live_preview.xml" value="0.1" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/ndt1/app/src/main/res/layout-land/fragment_home.xml" value="0.1" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/ndt1/app/src/main/res/layout/activity_test_ui.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/ndt1/app/src/main/res/layout/activity_trafficsign.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/ndt1/app/src/main/res/layout/activity_vision_live_preview.xml" value="0.1" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/ndt1/app/src/main/res/layout/activity_web.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/ndt1/app/src/main/res/layout/course_rv_item.xml" value="0.1" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/ndt1/app/src/main/res/layout/dialog.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/ndt1/app/src/main/res/layout/fragment_home.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/ndt1/app/src/main/res/layout/fragment_profile.xml" value="0.176" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/ndt1/app/src/main/res/layout/fragment_setting.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/ndt1/app/src/main/res/layout/history.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/ndt1/app/src/main/res/layout/realtime_info.xml" value="0.2" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/ndt1/app/src/main/res/layout/settings_activity.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/ndt1/app/src/main/res/menu/navigation.xml" value="0.23802083333333332" />
+        <entry key="..\:/javaproject/TaxiHelper/app/src/main/res/drawable-hdpi/ic_card_giftcard_white_24dp.xml" value="0.1" />
+        <entry key="..\:/javaproject/TaxiHelper/app/src/main/res/drawable-hdpi/ic_person_white_24dp.xml" value="0.167" />
+        <entry key="..\:/javaproject/TaxiHelper/app/src/main/res/drawable-hdpi/ic_shopping_cart_white_24dp.xml" value="0.167" />
+        <entry key="..\:/javaproject/TaxiHelper/app/src/main/res/drawable-xxxhdpi/circle_border.xml" value="0.167" />
+        <entry key="..\:/javaproject/TaxiHelper/app/src/main/res/drawable-xxxhdpi/ctr_bg.xml" value="0.167" />
+        <entry key="..\:/javaproject/TaxiHelper/app/src/main/res/drawable-xxxhdpi/ic_settings.xml" value="0.167" />
+        <entry key="..\:/javaproject/TaxiHelper/app/src/main/res/drawable/image_shadow.xml" value="0.167" />
+        <entry key="..\:/javaproject/TaxiHelper/app/src/main/res/drawable/logo_mlkit.xml" value="0.167" />
+        <entry key="..\:/javaproject/TaxiHelper/app/src/main/res/layout-land/activity_vision_live_preview.xml" value="0.2140625" />
+        <entry key="..\:/javaproject/TaxiHelper/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/javaproject/TaxiHelper/app/src/main/res/layout/activity_settings.xml" value="0.1598731884057971" />
+        <entry key="..\:/javaproject/TaxiHelper/app/src/main/res/layout/activity_splash.xml" value="0.12360688956433637" />
+        <entry key="..\:/javaproject/TaxiHelper/app/src/main/res/layout/activity_test_ui.xml" value="0.18614130434782608" />
+        <entry key="..\:/javaproject/TaxiHelper/app/src/main/res/layout/activity_vision_live_preview.xml" value="0.1598731884057971" />
+        <entry key="..\:/javaproject/TaxiHelper/app/src/main/res/layout/fragment__anasayfa.xml" value="0.2569444444444444" />
+        <entry key="..\:/javaproject/TaxiHelper/app/src/main/res/layout/fragment_profile.xml" value="0.4" />
+        <entry key="..\:/javaproject/TaxiHelper/app/src/main/res/layout/fragment_setting.xml" value="0.12360688956433637" />
+        <entry key="..\:/javaproject/TaxiHelper/app/src/main/res/layout/loginnormal.xml" value="0.264" />
+        <entry key="..\:/javaproject/TaxiHelper/app/src/main/res/layout/settings_style.xml" value="0.12360688956433637" />
+        <entry key="..\:/javaproject/TaxiHelper/app/src/main/res/layout/splashscreen.xml" value="0.18614130434782608" />
+        <entry key="..\:/javaproject/TaxiHelper/app/src/main/res/layout/toggle_style.xml" value="0.12360688956433637" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

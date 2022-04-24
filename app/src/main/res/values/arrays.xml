@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="pref_entries_face_detector_landmark_mode">
+        <item>@string/pref_entries_face_detector_landmark_mode_no_landmarks</item>
+        <item>@string/pref_entries_face_detector_landmark_mode_all_landmarks</item>
+    </string-array>
+
+    <string-array name="pref_entry_values_face_detector_landmark_mode">
+        <item>@string/pref_entry_values_face_detector_landmark_mode_no_landmarks</item>
+        <item>@string/pref_entry_values_face_detector_landmark_mode_all_landmarks</item>
+    </string-array>
+
+    <string-array name="pref_entries_face_detector_contour_mode">
+        <item>@string/pref_entries_face_detector_contour_mode_no_contours</item>
+        <item>@string/pref_entries_face_detector_contour_mode_all_contours</item>
+    </string-array>
+
+    <string-array name="pref_entry_values_face_detector_contour_mode">
+        <item>@string/pref_entry_values_face_detector_contour_mode_no_contours</item>
+        <item>@string/pref_entry_values_face_detector_contour_mode_all_contours</item>
+    </string-array>
+
+    <string-array name="pref_entries_face_detector_classification_mode">
+        <item>@string/pref_entries_face_detector_classification_mode_no_classifications</item>
+        <item>@string/pref_entries_face_detector_classification_mode_all_classifications</item>
+    </string-array>
+
+    <string-array name="pref_entry_values_face_detector_classification_mode">
+        <item>@string/pref_entry_values_face_detector_classification_mode_no_classifications</item>
+        <item>@string/pref_entry_values_face_detector_classification_mode_all_classifications</item>
+    </string-array>
+
+    <string-array name="pref_entries_face_detector_performance_mode">
+        <item>@string/pref_entries_face_detector_performance_mode_fast</item>
+        <item>@string/pref_entries_face_detector_performance_mode_accurate</item>
+    </string-array>
+
+    <string-array name="pref_entry_values_face_detector_performance_mode">
+        <item>@string/pref_entry_values_face_detector_performance_mode_fast</item>
+        <item>@string/pref_entry_values_face_detector_performance_mode_accurate</item>
+    </string-array>
+    <!-- Reply Preference -->
+    <string-array name="reply_entries">
+        <item>Reply</item>
+        <item>Reply to all</item>
+    </string-array>
+
+    <string-array name="reply_values">
+        <item>reply</item>
+        <item>reply_all</item>
+    </string-array>
+
+    <string-array name="duration_name">
+        <item>5 giây</item>
+        <item>10 giây</item>
+        <item>30 giây</item>
+        <item>1 phút</item>
+        <item>1 phút 30 giây</item>
+        <item>3 phút</item>
+    </string-array>
+
+    <string-array name="duration_value">
+        <item>5000</item>
+        <item>10000</item>
+        <item>30000</item>
+        <item>60000</item>
+        <item>90000</item>
+        <item>180000</item>
+    </string-array>
+
+</resources>

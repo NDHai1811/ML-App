@@ -1,0 +1,19 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:backgroundTint="#E80808"
+    android:backgroundTintMode="screen"
+    android:foregroundTint="#673AB7"
+    android:foregroundTintMode="src_over"
+    android:outlineProvider="paddedBounds"
+    tools:context=".ui.TestUi">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/historyRV"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+</RelativeLayout>

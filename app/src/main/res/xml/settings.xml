@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:enabled="true"
+        android:key="notificationss_category"
+        android:title="Notification">
+
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="notifications"
+            android:persistent="true"
+            android:title="Cho phép thông báo"/>
+        <RingtonePreference
+            android:key="ringtone"
+            android:showDefault="true"
+            android:showSilent="true"
+            android:summary="Nhạc sàn rung lắc dữ dội.mp3"
+            android:title="Chuông cảnh báo" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Giao diện">
+
+        <MultiSelectListPreference
+            android:defaultValue="languages"
+            android:summary="Tiếng Việt"
+            android:title="Ngôn ngữ"/>
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="display"
+            android:persistent="true"
+            android:title="Chủ đề"/>
+
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

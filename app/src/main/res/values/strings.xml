@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">DAWN</string>
+    <string name="ok">OK</string>
+    <string name="permission_camera_rationale">Access to the camera is needed for detection</string>
+    <string name="no_camera_permission">This application cannot run because it does not have the camera permission.  The application will now exit.</string>
+    <string name="low_storage_error">Face detector dependencies cannot be downloaded due to low device storage</string>
+    <string name="toggle_turn_on">Front</string>
+    <string name="toggle_turn_off">Back</string>
+    <string name="desc_camera_source_activity">Vision detectors demo with live camera preview</string>
+    <string name="download_error">Download error</string>
+    <string name="start_over">Start over</string>
+    <string name="menu_item_settings">Settings</string>
+    <string name="select_image">Select image</string>
+
+    <!-- Settings related strings. -->
+    <string name="pref_screen_title_live_preview">Cài đặt</string>
+    <string name="pref_category_face_detection">Nhận diện</string>
+
+    <!-- Strings for camera settings. -->
+    <string name="pref_category_key_camera" translatable="false">pckc</string>
+    <string name="pref_category_title_camera">Camera</string>
+    <string name="pref_key_rear_camera_preview_size" translatable="false">rcpvs</string>
+    <string name="pref_key_rear_camera_picture_size" translatable="false">rcpts</string>
+    <string name="pref_key_front_camera_preview_size" translatable="false">fcpvs</string>
+    <string name="pref_key_front_camera_picture_size" translatable="false">fcpts</string>
+    <string name="pref_key_camera_live_viewport" translatable="false">clv</string>
+    <string name="pref_title_rear_camera_preview_size">Kích thước trình chiếu của camera sau</string>
+    <string name="pref_title_front_camera_preview_size">Kích thước trình chiếu của camera trước</string>
+    <string name="pref_title_camera_live_viewport">Enable live viewport</string>
+    <string name="pref_summary_camera_live_viewport">Do not block camera preview drawing on detection</string>
+
+    <!-- Strings for face detector landmark mode preference. -->
+    <string name="pref_title_face_detector_landmark_mode">Hiển thị điểm mốc</string>
+    <string name="pref_key_live_preview_face_detection_landmark_mode" translatable="false">lpfdlm</string>
+    <string name="pref_entries_face_detector_landmark_mode_no_landmarks">Không</string>
+    <string name="pref_entries_face_detector_landmark_mode_all_landmarks">Tất cả</string>
+    <!-- The following entry values must match the ones in FaceDetectorOptions#LandmarkMode -->
+    <string name="pref_entry_values_face_detector_landmark_mode_no_landmarks" translatable="false">1</string>
+    <string name="pref_entry_values_face_detector_landmark_mode_all_landmarks" translatable="false">2</string>
+
+    <!-- Strings for face detector contour mode preference. -->
+    <string name="pref_title_face_detector_contour_mode">Hiển thị điểm mặt</string>
+    <string name="pref_key_live_preview_face_detection_contour_mode" translatable="false">lpfdcm</string>
+    <string name="pref_entries_face_detector_contour_mode_no_contours">Không</string>
+    <string name="pref_entries_face_detector_contour_mode_all_contours">Tất cả</string>
+    <!-- The following entry values must match the ones in FaceDetectorOptions#ContourMode -->
+    <string name="pref_entry_values_face_detector_contour_mode_no_contours" translatable="false">1</string>
+    <string name="pref_entry_values_face_detector_contour_mode_all_contours" translatable="false">2</string>
+
+    <!-- Strings for face detector classification mode preference. -->
+    <string name="pref_title_face_detector_classification_mode">Chế độ phân loại</string>
+    <string name="pref_key_live_preview_face_detection_classification_mode" translatable="false">lpfdcfm</string>
+    <string name="pref_entries_face_detector_classification_mode_no_classifications">Không</string>
+    <string name="pref_entries_face_detector_classification_mode_all_classifications">Có</string>
+    <!-- The following entry values must match the ones in FaceDetectorOptions#ClassificationMode -->
+    <string name="pref_entry_values_face_detector_classification_mode_no_classifications" translatable="false">1</string>
+    <string name="pref_entry_values_face_detector_classification_mode_all_classifications" translatable="false">2</string>
+
+    <!-- Strings for face detector performance mode preference. -->
+    <string name="pref_title_face_detector_performance_mode">Hiệu năng</string>
+    <string name="pref_key_live_preview_face_detection_performance_mode" translatable="false">lpfdpm</string>
+    <string name="pref_entries_face_detector_performance_mode_fast">Nhanh</string>
+    <string name="pref_entries_face_detector_performance_mode_accurate">Chính xác</string>
+    <!-- The following entry values must match the ones in FaceDetectorOptions#PerformanceMode -->
+    <string name="pref_entry_values_face_detector_performance_mode_fast" translatable="false">1</string>
+    <string name="pref_entry_values_face_detector_performance_mode_accurate" translatable="false">2</string>
+
+    <!-- Strings for face detector face tracking preference. -->
+    <string name="pref_title_face_detector_face_tracking">Theo dõi khuôn mặt</string>
+    <string name="pref_key_live_preview_face_detection_face_tracking" translatable="false">lpfdft</string>
+
+    <!-- Strings for face detector min face size preference. -->
+    <string name="pref_title_face_detector_min_face_size">Kích thước khuôn mặt nhỏ nhất có thể phát hiện</string>
+    <string name="pref_key_live_preview_face_detection_min_face_size" translatable="false">lpfdmfs</string>
+    <string name="pref_dialog_message_face_detector_min_face_size">
+Tỷ lệ giữa chiều rộng phần đầu với chiều rộng hình ảnh và phạm vi có giá trị hợp lệ từ 0.0 đến 1.0</string>
+    <string name="pref_toast_invalid_min_face_size">Kích thước khuôn mặt tối thiểu phải trong phạm vi [0.0, 1.0]</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="edit_text_preference_1">test</string>
+    <string name="duration_update_info">Cài đặt thời gian cập nhật vị trí</string>
+    <string name="key_duration_update_info">dui</string>
+
+
+    <string name="title_shop">Trang chủ</string>
+    <string name="title_gifts">Thông báo</string>
+    <string name="title_cart">Tra cứu</string>
+    <string name="title_profile">Cá nhân</string>
+
+    <string name="yes">YES</string>
+    <string name="no">NO</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+
+    <string name="text1">
+        <br>•	35m nếu vận tốc lưu hành(V) = 60 (km/h)\n</br>
+        <br>•	55m nếu 60≤V≤80\n</br>
+        <br>•	70m nếu 80≤V≤100\n</br>
+        <br>•	100m nếu 100≤V≤120\n</br>
+        <br>•	Dưới 60km/h: Chủ động và đảm bảo khoảng cách\n</br>
+    </string>
+    <string name="text2">
+        <br>•	Không được quay đầu xe, không lùi, không vượt\n</br>
+        <br>•	Không được vượt trên cầu hẹp có một làn xe.\n</br>
+        <br>•	Không được phép quay đầu xe ở phần đường dành cho người đi bộ qua đường.\n</br>
+        <br>•	Cấm lùi xe ở khu vực cấm dừng và nơi đường bộ giao nhau.\n</br>
+
+    </string>
+    <string name="text3">
+        <br>•	Nhất chớm, nhì ưu, tam đường, tứ hướng\n</br>
+        <br>•	Nhất chớm: Xe nào chớm tới vạch trước thì được đi trước.\n</br>
+        <br>•	Nhì ưu: Xe ưu tiên được đi trước. Thứ tự xe ưu tiên: Hỏa-Sự-An-Thương (Cứu hỏa – Quân sự - Công an – Cứu thương – Hộ đê – Đoàn xe tang).\n</br>
+        <br>•	Tam đường: Xe ở đường chính, đường ưu tiên.\n</br>
+        <br>•	Tứ hướng: Thứ tự hướng: Bên phải trống – Rẽ phải – Đi thẳng – Rẽ trái.\n</br>
+            <br>Thứ tự ưu tiên với xe ưu tiên: Hỏa-Sự-An-Thương\n</br>
+            <br>1.	Hỏa: Xe Cứu hỏa\n</br>
+            <br>2.	Sự : Xe Quân sự\n</br>
+            <br>3.	An: Xe Công an\n</br>
+            <br>4.	Thương: Xe cứu thươngXe hộ đê, xe đi làm nhiệm vụ khẩn cấp,Đoàn xe tang\n</br>
+
+    </string>
+    <string name="text4">
+        <br>•	Biển nguy hiểm (hình tam giác vàng)\n</br>
+        <br>•	Biển cấm (vòng tròn đỏ)\n</br>
+        <br>•	Biển hiệu lệnh (vòng tròn xanh)\n</br>
+        <br>•	Biển chỉ dẫn (vuông hoặc hình chữ nhật xanh)\n</br>
+        <br>•	Biển phụ (vuông, chữ nhật trắng đen): Hiệu lực nằm ở biển phụ khi có đặt biển phụ\n</br>
+
+    </string>
+    <string name="text5">
+        <br>•	Giơ tay thẳng đứng: Tất cả dừng, trừ xe đã ở trong ngã tư được phép đi\n</br>
+        <br>•	Giang ngang tay: Trái phải đi; Trước sau dừng\n</br>
+        <br>•	Tay phải giơ trước: Sau, phải dừng, trước rẽ phải, trái đi các hướng, người đi bộ qua đường đi sau người điều khiển.\n</br>
+
+    </string>
+    <string name="text6">
+        <br>•	Không lái xe liên tục quá 4 giờ.\n</br>
+        <br>•	Không làm việc 1 ngày của lái xe quá 10 giờ.\n</br>
+        <br>•	Người kinh doanh vận tải không được tự ý thay đổi vị trí đón trả khách.\n</br>
+        <br>•	Vận chuyển hàng nguy hiểm phải có giấy phép.\n</br>
+
+    </string>
+    <string name="text7">
+        <br>•	Xe mô tô xuống dốc dài cần sử dụng cả phanh trước và phanh sau để giảm tốc độ.\n</br>
+        <br>•	Khởi hành xe ô tô số tự động cần đạp phanh chân hết hành trình.\n</br>
+        <br>•	Thực hiện phanh tay cần phải bóp khóa hãm đẩy cần phanh tay về phía trước.\n</br>
+        <br>•	Khởi hành ô tô sử dụng hộp số đạp côn hết hành trình.\n</br>
+        <br>•	Thực hiện quay đầu xe với tốc độ thấp.\n</br>
+        <br>•	Lái xe ô tô qua đường sắt không rào chắn thì cách 5 mét hạ kính cửa, tắt âm thanh, quan sát.\n</br>
+        <br>•	Mở cửa xe thì quan sát rồi mới mở hé cánh cửa.\n</br>
+        <br>•	Niên hạn ô tô trên 9 chỗ ngồi là 20 năm.\n</br>
+        <br>•	Niên hạn ô tô tải là 25 năm.\n</br>
+
+    </string>
+    <string name="text8">
+        <br>•	Xe xuống dốc phải nhường đường cho xe đang lên dốc\n</br>
+        <br>•	Tốc độ chậm đi về bên phải.\n</br>
+        <br>•	Chỉ sử dụng còi từ 5 giờ sáng đến 22 giờ tối.\n</br>
+        <br>•	Trong đô thị sử dụng đèn chiếu gần.\n</br>
+        <br>•	Không được phép lắp đặt còi đèn không đúng thiết kế, trừ phi được chấp thuận của cơ quan có thẩm quyền.\n</br>
+        <br>•	Chuyển làn đường phải có tín hiệu báo trước.\n</br>
+        <br>•	Xe thô sơ phải đi làn đường nên phải trong cùng.\n</br>
+        <br>•	Tránh xe ngược chiều thì nhường đường qua đường hẹp và nhường xe lên dốc.\n</br>
+        <br>•	Đứng cách ray đường sắt 5m.\n</br>
+        <br>•	Vào cao tốc phải nhường đường cho xe đang chạy trên đường.\n</br>
+        <br>•	Trên cao tốc chỉ được dừng xe, đỗ xe ở nơi quy định.\n</br>
+        <br>•	Trong hầm chỉ được dừng xe, đỗ xe ở nơi quy định.\n</br>
+        <br>•	Xe quá tải trọng phải do cơ quan quản lý đường bộ cấp phép.\n</br>
+        <br>•	Trọng lượng xe kéo rơ moóc phải lớn hơn rơ moóc.\n</br>
+        <br>•	Kéo xe không hệ thống hãm phải dùng thanh nối cứng.\n</br>
+        <br>•	Đường có giải phân cách được xem là đường đôi.\n</br>
+        <br>•	Giảm tốc độ, chú ý quan sát khi gặp biển báo nguy hiểm.\n</br>
+        <br>•	Giảm tốc độ, đi sát về bên phải khi xe sau xin vượt.\n</br>
+        <br>•	Điểm giao cắt đường sắt thì ưu tiên đường sắt.\n</br>
+        <br>•	Nhường đường cho xe ưu tiên có tín hiệu còi, cờ, đèn.\n</br>
+        <br>•	Không vượt xe khác trên đường vòng, khuất tầm nhìn.\n</br>
+        <br>•	Nơi có vạch kẻ đường dành cho người đi bộ thì nhường đường.\n</br>
+        <br>•	Dừng xe, đỗ xe cách lề đường, hè phố không quá 0,25 mét.\n</br>
+        <br>•	Dừng xe, đỗ xe trên đường hẹp cách xe khác 20 mét.\n</br>
+        <br>•	Giảm tốc độ trên đường ướt, đường hẹp và đèo dốc.\n</br>
+        <br>•	Xe buýt đang dừng đón trả khách thì giảm tốc độ và từ từ vượt qua xe buýt.\n</br>
+
+    </string>
+</resources>
