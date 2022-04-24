@@ -1,0 +1,24 @@
+Công việc:
+-Hoàn thiện thuật toán(Mắt, hướng nhìn, thời gian đưa ra cảnh báo..., model để phân tích)
++Cải thiện thuật toán
+	*Tính độ mở mắt ở nhiều trường hợp
+	*Tính hướng nhìn ở nhiều trường hợp
++Tìm hiểu cách loại cảnh báo, kết hợp và phân chia đồng đều, phù hợp cho cn cảnh báo(Thêm nhiều loại, âm thanh, thông tin khi cảnh báo....)
++Trích xuất hình ảnh khi phát hiện mtt (Hải)
+
+-Hoàn thiện chức năng thông báo cho app
++Thông báo app vẫn chạy(Ngoài giao diện app)
++Thông báo phiên bản mới(Cả trong - cả ngoài)
++ (Long)
+
+-Hoàn thiện phần tra cứu(Còn tra cứu các luật giao thông cơ bản, thêm mẹo-*tuỳ, tra cứu biển báo-có thể thêm quét biển báo-*khó quá thì bỏ)
++Thêm chức năng quét biển báo
++Thêm phần tra cứu luật
++Bổ sung cho tra cứu mẹo (Hiếu)
+
+-Làm chức năng đăng nhập
++Thêm chức năng đăng nhập, đăng xuất cho app
++Tạo web backend để quản lý dl
++Trong website admin sẽ có thêm sửa xoá người dùng, thông tin, lỗi hoạt động...
+(Cả 3 cùng làm)
+
