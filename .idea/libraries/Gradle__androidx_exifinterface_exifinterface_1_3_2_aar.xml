@@ -15,7 +15,6 @@
     <JAVADOC />
     <SOURCES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.exifinterface/exifinterface/1.3.2/1bd0ec4a0281e75ef08c8317c92f800e48b0fd19/exifinterface-1.3.2-sources.jar!/" />
-      <root url="jar://C:/caches/modules-2/files-2.1/androidx.exifinterface/exifinterface/1.3.2/1bd0ec4a0281e75ef08c8317c92f800e48b0fd19/exifinterface-1.3.2-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

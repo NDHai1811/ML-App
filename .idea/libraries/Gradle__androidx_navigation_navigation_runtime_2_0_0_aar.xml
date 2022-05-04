@@ -11,7 +11,6 @@
     <JAVADOC />
     <SOURCES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.navigation/navigation-runtime/2.0.0/d8ad82a1ae5222a5c294450bc7dee16eed8e433/navigation-runtime-2.0.0-sources.jar!/" />
-      <root url="jar://C:/caches/modules-2/files-2.1/androidx.navigation/navigation-runtime/2.0.0/d8ad82a1ae5222a5c294450bc7dee16eed8e433/navigation-runtime-2.0.0-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

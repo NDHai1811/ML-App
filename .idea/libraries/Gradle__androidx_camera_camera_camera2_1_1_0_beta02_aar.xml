@@ -15,7 +15,6 @@
     <JAVADOC />
     <SOURCES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.camera/camera-camera2/1.1.0-beta02/b30bc56295e81b4183c24024d0b9d7ef21dd7190/camera-camera2-1.1.0-beta02-sources.jar!/" />
-      <root url="jar://C:/caches/modules-2/files-2.1/androidx.camera/camera-camera2/1.1.0-beta02/b30bc56295e81b4183c24024d0b9d7ef21dd7190/camera-camera2-1.1.0-beta02-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

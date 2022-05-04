@@ -15,7 +15,6 @@
     <JAVADOC />
     <SOURCES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.transition/transition/1.4.1/975f706c6c0892d0dfaa416cf04f469cfb0a4343/transition-1.4.1-sources.jar!/" />
-      <root url="jar://C:/caches/modules-2/files-2.1/androidx.transition/transition/1.4.1/975f706c6c0892d0dfaa416cf04f469cfb0a4343/transition-1.4.1-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

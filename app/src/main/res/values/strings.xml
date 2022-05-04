@@ -184,4 +184,31 @@ Tỷ lệ giữa chiều rộng phần đầu với chiều rộng hình ảnh v
         <br>•	Xe buýt đang dừng đón trả khách thì giảm tốc độ và từ từ vượt qua xe buýt.\n</br>
 
     </string>
+    <string name="text10">
+        <br>•	Phạt nặng xe ô tô nhận, trả khách, hàng hóa trên đường cao tốc: tăng mức phạt gần như gấp đôi đối với hành vi xe ô tô chở hành khách, xe ô tô tải, máy kéo (bao gồm cả rơ-moóc hoặc sơ-mi-rơ-moóc được kéo theo) và các loại xe tương tự xe ô tô chở hành khách, vận chuyển hàng hóa, mức phạt tiền từ 10 - 12 triệu đồng đối với người điều khiển xe có hành vi: đón, trả khách trên đường cao tốc; nhận, trả hàng trên đường cao tốc. Ngoài ra, người điều khiển xe thực hiện các hành vi trên còn bị tước quyền sử dụng giấy phép lái xe (GPLX) từ 2 - 4 tháng. Hiện nay, Nghị định số 100/2021/NĐ-CP chỉ xử phạt tiền từ 5 - 7 triệu đồng đối với hành vi nhận, trả khách, hàng hóa trên đường cao tốc.\n</br>
+    </string>
+
+    <string name="text11">
+        <br>•	Không đội mũ bảo hiểm bị phạt tiền gấp đôi: theo đó không đội mũ bảo hiểm khi tham gia giao thông sẽ bị phạt tiền từ 400 - 600 ngàn đồng, tăng gấp đôi so với hiện nay (mức phạt theo Nghị định số 100/2021/NĐ-CP là từ 200 - 300 ngàn đồng)\n</br>
+    </string>
+
+    <string name="text12">
+        <br>•Bằng lái xe quá hạn bị phạt 12 triệu đồng: theo đó người sử dụng GPLX quá hạn dưới 3 tháng sẽ bị phạt 5 - 7 triệu đồng. Người sử dụng giấy phép quá hạn trên 3 tháng, không có hoặc sử dụng giấy phép không do cơ quan có thẩm quyền cấp sẽ bị phạt 10 - 12 triệu đồng. Nghị định cũng tăng mức xử phạt lên 1 - 2 triệu đồng đối với người lái xe máy dưới 175cm3 và các loại xe tương tự mà không có GPLX, hoặc sử dụng giấy phép không do cơ quan có thẩm quyền cấp, giấy phép bị tẩy xóa. Tăng mức phạt từ 3 - 4 triệu đồng lên 4 - 5 triệu đồng đối với người điều khiển xe máy trên 175cm3, không có GPLX hoặc sử dụng giấy phép hết hạn. (mức phạt theo Nghị định số 100/2021/NĐ-CP đối với việc sử dụng GPLX ô tô quá hạn 6 tháng là từ 4 - 6 triệu đồng).\n</br>
+    </string>
+
+    <string name="text13">
+        <br>•	Chỉ còn 3 mức vi phạm đối với xe chở quá tải: hành vi chở quá số người quy định trên xe khách, đối với chủ xe là cá nhân, cơ quan chức năng quy định phạt tiền 1 - 2 triệu đồng trên mỗi người vượt quá quy định. Tuy nhiên, tổng mức phạt tiền tối đa được thay đổi từ không vượt quá 40 triệu đồng như trước đây tăng lên thành không vượt quá 70 triệu đồng. Đối với chủ xe là doanh nghiệp, phạt tiền 2 - 4 triệu đồng trên mỗi người vượt quá quy định. Tuy nhiên, tổng mức phạt tiền tối đa được thay đổi từ không vượt quá 80 triệu như trước đây được tăng lên không vượt quá 150 triệu đồng. Đối với người điều khiển xe chở quá tải trọng, trước đây cơ quan chức năng chia làm 5 mức phạt lần lượt là: quá tải 10 - 20%; 20 - 50%; 50 - 100%; 100 - 150% và trên 150% với mức phạt từ 1 - 16 triệu đồng.\n</br>
+    </string>
+
+    <string name="text14">
+        <br>•	Tại Nghị định số 123/2021/NĐ-CP chỉ còn 3 mức xử lý gồm: quá tải 10 - 20%, 20 - 50% và trên 50% với mức xử phạt lần lượt là từ 4 - 6 triệu đồng, 13 - 15 triệu đồng và 40 - 50 triệu đồng. Bên cạnh đó, chủ phương tiện cũng bị tăng mức phạt từ 18 - 75 triệu đồng đối với cá nhân và 36 - 150 triệu đồng đối với tổ chức, tương ứng với mức độ quá tải của xe.\n</br>
+    </string>
+
+    <string name="text15">
+        <br>•	Bán biển số xe bị tăng mức phạt gấp 6 lần: phạt tiền 10 - 12 triệu đồng đối với cá nhân (hiện là 1 - 2 triệu đồng) và 20 - 24 triệu đồng đối với tổ chức (hiện là 2 - 4 triệu đồng) có hành vi bán biển số phương tiện giao thông cơ giới đường bộ không phải là biển số do cơ quan Nhà nước có thẩm quyền sản xuất hoặc không được cơ quan Nhà nước có thẩm quyền cho phép. Mức phạt tăng từ 3 - 5 triệu đồng lên 30 - 35 triệu đồng đối với cá nhân; từ 6 - 10 triệu đồng lên 60 - 70 triệu đồng với tổ chức có hành vi sản xuất biển số trái phép.\n</br>
+    </string>
+
+    <string name="text16">
+        <br>•	Đối với hành vi dán, che mờ biển số ô tô, để biển số xe không rõ chữ, số... Nghị định số 123/NĐ-CP cũng tăng mức phạt lên thành 4 - 6 triệu đồng (trước đây là 800 nghìn đến 1 triệu đồng).\n</br>
+    </string>
 </resources>
