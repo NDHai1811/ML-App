@@ -96,122 +96,59 @@
                 android:textColor="@color/black"
                 android:textSize="14sp"
                 app:layout_constraintTop_toBottomOf="@+id/txt2"/>
-            <TextView
-                android:id="@+id/txt5"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginTop="0dp"
-                android:text="Thứ tự nhường xe"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@+id/txt4"/>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginTop="0dp"
                 android:id="@+id/txt6"
-                android:text="@string/text3"
+                android:text="@string/text12"
                 android:textSize="14sp"
                 android:textColor="@color/black"
-                app:layout_constraintTop_toBottomOf="@+id/txt5"/>
-            <TextView
-                android:id="@+id/txt7"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginTop="0dp"
-                android:text="Phân nhóm biển báo hiệu"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@+id/txt6"/>
+                app:layout_constraintTop_toBottomOf="@+id/txt4"/>
+
 
             <TextView
                 android:id="@+id/txt8"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginTop="0dp"
-                android:text="@string/text4"
+                android:text="@string/text13"
                 android:textColor="@color/black"
                 android:textSize="14sp"
-                app:layout_constraintTop_toBottomOf="@+id/txt7"/>
-            <TextView
-                android:id="@+id/txt9"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginTop="0dp"
-                android:text="Hiệu lệnh người điều khiển giao thông"
-                android:textStyle="bold"
-                android:textSize="20sp"
-                android:textColor="@color/black"
-                app:layout_constraintTop_toBottomOf="@+id/txt8"/>
+                app:layout_constraintTop_toBottomOf="@+id/txt6"/>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:id="@+id/txt10"
                 android:layout_marginTop="0dp"
-                android:text="@string/text5"
+                android:text="@string/text14"
                 android:textColor="@color/black"
                 android:textSize="14sp"
-                app:layout_constraintTop_toBottomOf="@+id/txt9"/>
+                app:layout_constraintTop_toBottomOf="@+id/txt8"/>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:id="@+id/txt11"
-                android:layout_marginTop="0dp"
-                android:text="Nghiệp vụ vận tải"
-                android:textSize="20sp"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@+id/txt10"/>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:id="@+id/txt12"
                 android:layout_marginTop="0dp"
-                android:text="@string/text6"
+                android:text="@string/text15"
                 android:textColor="@color/black"
                 android:textSize="14sp"
-                app:layout_constraintTop_toBottomOf="@+id/txt11"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:id="@+id/txt13"
-                android:layout_marginTop="0dp"
-                android:text="Kỹ thuật lái xe"
-                android:textSize="20sp"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@+id/txt12"/>
+                app:layout_constraintTop_toBottomOf="@+id/txt10"/>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginTop="0dp"
                 android:id="@+id/txt14"
-                android:text="@string/text7"
+                android:text="@string/text16"
                 android:textColor="@color/black"
                 android:textSize="14sp"
-                app:layout_constraintTop_toBottomOf="@+id/txt13"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:id="@+id/txt15"
-                android:layout_marginTop="0dp"
-                android:text="Các lưu y khác"
-                android:textSize="20sp"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@+id/txt14"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginTop="0dp"
-                android:id="@+id/txt16"
-                android:text="@string/text8"
-                android:textColor="@color/black"
-                android:textSize="14sp"
-                app:layout_constraintTop_toBottomOf="@+id/txt15"/>
+                app:layout_constraintTop_toBottomOf="@+id/txt12"/>
+
 
 
 
