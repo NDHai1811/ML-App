@@ -24,7 +24,7 @@
             app:expandedTitleTextColor="@color/white"
             app:contentScrim="@color/blue1"
             app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
-            app:title="Tra cứu thông tin">
+            app:title="Các luật xử phạt">
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -65,69 +65,37 @@
 
             </TextView>
 
-            <TextView
-                android:id="@+id/linearLayout2"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginTop="10dp"
-                android:text="Người điều khiển xe mô tô, ô tô, máy kéo trên đường mà trong máu hoặc hơi thở có nồng độ cồn: Bị nghiêm cấm"
-                android:textColor="@color/black"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
-
-            </TextView>
             <View
                 android:id="@+id/v1"
                 android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="1dp"
                 android:background="@color/black"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout"
                 tools:ignore="MissingConstraints" />
 
-            <TextView
-                android:id="@+id/txt1"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginTop="10dp"
-                android:text="Khoảng cách an toàn tối thiểu"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@+id/v1"/>
+
             <TextView
                 android:id="@+id/txt2"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginTop="0dp"
-                android:text="@string/text1"
+                android:text="@string/text10"
                 android:textColor="@color/black"
                 android:textSize="14sp"
-                app:layout_constraintTop_toBottomOf="@+id/txt1"/>
+                app:layout_constraintTop_toBottomOf="@+id/v1"/>
 
-            <TextView
-                android:id="@+id/txt3"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginTop="0dp"
-                android:text="Trên đường cao tốc, trong đường hầm, đường vòng, đầu dốc, nơi tầm nhìn hạn chế"
-                android:textStyle="bold"
-                android:textSize="20sp"
-                android:textColor="@color/black"
-                app:layout_constraintTop_toBottomOf="@+id/txt2"/>
+
             <TextView
                 android:id="@+id/txt4"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginTop="0dp"
-                android:text="@string/text2"
+                android:text="@string/text11"
                 android:textColor="@color/black"
                 android:textSize="14sp"
-                app:layout_constraintTop_toBottomOf="@+id/txt3"/>
+                app:layout_constraintTop_toBottomOf="@+id/txt2"/>
             <TextView
                 android:id="@+id/txt5"
                 android:layout_width="match_parent"
