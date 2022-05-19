@@ -1,12 +1,13 @@
 <component name="libraryTable">
   <library name="Gradle: androidx.core:core-ktx:1.1.0@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ca38b02d070d8f3553cd88642997b7d9/jetified-core-ktx-1.1.0/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ca38b02d070d8f3553cd88642997b7d9/jetified-core-ktx-1.1.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ca38b02d070d8f3553cd88642997b7d9/jetified-core-ktx-1.1.0/AndroidManifest.xml" />
-      <root url="file://C:/caches/transforms-2/files-2.1/ca38b02d070d8f3553cd88642997b7d9/jetified-core-ktx-1.1.0/AndroidManifest.xml" />
-      <root url="file://C:/caches/transforms-2/files-2.1/ca38b02d070d8f3553cd88642997b7d9/jetified-core-ktx-1.1.0/res" />
-      <root url="jar://C:/caches/transforms-2/files-2.1/ca38b02d070d8f3553cd88642997b7d9/jetified-core-ktx-1.1.0/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../../../../caches/transforms-2/files-2.1/ca38b02d070d8f3553cd88642997b7d9/jetified-core-ktx-1.1.0/AndroidManifest.xml" />
+      <root url="file://$PROJECT_DIR$/../../../../caches/transforms-2/files-2.1/ca38b02d070d8f3553cd88642997b7d9/jetified-core-ktx-1.1.0/res" />
+      <root url="jar://$PROJECT_DIR$/../../../../caches/transforms-2/files-2.1/ca38b02d070d8f3553cd88642997b7d9/jetified-core-ktx-1.1.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/e4936eecc63fb5e5968bdadc69c2611e/jetified-core-ktx-1.1.0/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/e4936eecc63fb5e5968bdadc69c2611e/jetified-core-ktx-1.1.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/e4936eecc63fb5e5968bdadc69c2611e/jetified-core-ktx-1.1.0/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

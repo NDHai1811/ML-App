@@ -22,6 +22,9 @@
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/758d5baff7df5383436f46442cfd9dd2/jetified-MultiWaveHeader-1.0.0/res" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/758d5baff7df5383436f46442cfd9dd2/jetified-MultiWaveHeader-1.0.0/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/758d5baff7df5383436f46442cfd9dd2/jetified-MultiWaveHeader-1.0.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/96477de8c128043e29abf040bd8346cc/jetified-MultiWaveHeader-1.0.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/96477de8c128043e29abf040bd8346cc/jetified-MultiWaveHeader-1.0.0/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/96477de8c128043e29abf040bd8346cc/jetified-MultiWaveHeader-1.0.0/res" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$PROJECT_DIR$/../../../../caches/modules-2/files-2.1/com.scwang.wave/MultiWaveHeader/1.0.0/16f6fee245c4cab00cb72a056be63dfc12e2c727/MultiWaveHeader-1.0.0-javadoc.jar!/" />

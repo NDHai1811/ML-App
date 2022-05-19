@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.android.material.transition.MaterialFadeThrough;
+import com.google.mlkit.vision.demo.LuatXP;
 import com.google.mlkit.vision.demo.R;
 import com.google.mlkit.vision.demo.note;
 import com.google.mlkit.vision.demo.trafficsign;
@@ -98,6 +99,17 @@ public class Fragment_Setting extends Fragment {
             public void onClick(View v)
             {
                 Intent intent = new Intent(getActivity(), WebActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        CardView button4 = view.findViewById(R.id.luatxuphat);
+        button4.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Intent intent = new Intent(getActivity(), LuatXP.class);
                 startActivity(intent);
             }
         });

@@ -1,5 +1,6 @@
 package com.google.mlkit.vision.demo.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -13,6 +14,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.mlkit.vision.demo.R;
+import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,8 +33,6 @@ public class MainActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
-
-
         navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -92,6 +92,10 @@ public class MainActivity extends AppCompatActivity {
         state.add(R.id.navigation_home);
         Fragment_load(new Fragment_Home());
         ///////////////////////////////////////////////////////////
+        Intent intent = getIntent();
+        if(intent.getIntExtra("notice", 0)==1){
+
+        }
     }
     private void Fragment_load(Fragment fragment){
         FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
