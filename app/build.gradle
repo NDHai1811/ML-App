@@ -118,7 +118,7 @@ dependencies {
 
     implementation 'com.github.ittianyu:BottomNavigationViewEx:2.0.4'
     implementation 'com.google.android.material:material:1.0.0'
-
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.19'
 }
 
 configurations {
