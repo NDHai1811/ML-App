@@ -21,6 +21,7 @@ import com.google.gson.reflect.TypeToken;
 import com.google.mlkit.vision.demo.R;
 import com.google.mlkit.vision.demo.history.History;
 import com.google.mlkit.vision.demo.java.LivePreviewActivity;
+import com.google.mlkit.vision.demo.map.MapContainer;
 import com.google.mlkit.vision.demo.notification.GenerateTokenActivity;
 
 import java.lang.reflect.Type;
@@ -110,9 +111,9 @@ public class Fragment_Home extends Fragment {
             @Override
             public void onClick(View v)
             {
-//                Intent intent = new Intent(getActivity(), TestUi.class);
-//                startActivity(intent);
-                Toast.makeText(getContext(), "Đang trong quá trình phát triển", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getActivity(), MapContainer.class);
+                startActivity(intent);
+//                Toast.makeText(getContext(), "Đang trong quá trình phát triển", Toast.LENGTH_LONG).show();
             }
         });
 

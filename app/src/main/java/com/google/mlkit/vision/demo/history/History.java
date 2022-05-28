@@ -1,44 +1,61 @@
 package com.google.mlkit.vision.demo.history;
 
 public class History {
-    String startDestination, endDestination, totalTime, sleepyCount;
+    String tieude;
+    String batdau;
+    String ketthuc;
+    String thoigian;
+    String key;
 
-    public String getStartDestination() {
-        return startDestination;
+
+
+    public String getKey() {
+        return key;
     }
 
-    public void setStartDestination(String startDestination) {
-        this.startDestination = startDestination;
+    public void setKey(String key) {
+        this.key = key;
     }
 
-    public String getEndDestination() {
-        return endDestination;
+    public String getTieude() {
+        return tieude;
     }
 
-    public void setEndDestination(String endDestination) {
-        this.endDestination = endDestination;
+    public void setTieude(String tieude) {
+        this.tieude = tieude;
     }
 
-    public String getTotalTime() {
-        return totalTime;
+    public String getBatdau() {
+        return batdau;
     }
 
-    public History(String startDestination, String endDestination, String totalTime, String sleepyCount) {
-        this.startDestination = startDestination;
-        this.endDestination = endDestination;
-        this.totalTime = totalTime;
-        this.sleepyCount = sleepyCount;
+    public void setBatdau(String batdau) {
+        this.batdau = batdau;
     }
 
-    public void setTotalTime(String totalTime) {
-        this.totalTime = totalTime;
+    public String getKetthuc() {
+        return ketthuc;
     }
 
-    public String getSleepyCount() {
-        return sleepyCount;
+    public void setKetthuc(String ketthuc) {
+        this.ketthuc = ketthuc;
     }
 
-    public void setSleepyCount(String sleepyCount) {
-        this.sleepyCount = sleepyCount;
+    public String getThoigian() {
+        return thoigian;
+    }
+
+    public void setThoigian(String thoigian) {
+        this.thoigian = thoigian;
+    }
+
+    public History(String title, String startDestination, String endDestination, String totalTime) {
+        this.tieude = title;
+        this.batdau = startDestination;
+        this.ketthuc = endDestination;
+        this.thoigian = totalTime;
+    }
+
+    public History() {
     }
 }

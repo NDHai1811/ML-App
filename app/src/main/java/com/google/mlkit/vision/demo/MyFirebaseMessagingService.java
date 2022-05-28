@@ -29,10 +29,11 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
-        sendNotification(remoteMessage.getNotification().getTitle(),remoteMessage.getNotification().getBody());
+
+        sendNotification(remoteMessage.getNotification().getTitle(),remoteMessage.getNotification().getBody(), remoteMessage.getNotification().getClickAction());
     }
 
-    private void sendNotification(String messageTitle,String messageBody) {
+    private void sendNotification(String messageTitle,String messageBody, String clickAction) {
         int NOTIFICATION_ID = 234;
         NotificationManager notificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
         String CHANNEL_ID = null;
@@ -58,8 +59,9 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 .setContentText(messageBody)
                 .setAutoCancel(true);
 
-        Intent resultIntent = new Intent(this, TestUi.class);
+        Intent resultIntent = new Intent(this, NotifiContainer.class);
         resultIntent.putExtra("notice", 1);
+        resultIntent.putExtra("content", clickAction);
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
         stackBuilder.addParentStack(MainActivity.class);
         stackBuilder.addNextIntent(resultIntent);

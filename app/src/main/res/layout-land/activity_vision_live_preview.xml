@@ -7,35 +7,42 @@
     android:layout_height="match_parent"
     android:keepScreenOn="true">
 
-
-  <com.google.mlkit.vision.demo.CameraSourcePreview
-      android:id="@+id/preview_view"
+  <androidx.constraintlayout.widget.ConstraintLayout
+      android:id="@+id/llCameraView"
       android:layout_width="0dp"
       android:layout_height="match_parent"
-      app:layout_constraintHorizontal_weight="5"
+      app:layout_constraintHorizontal_weight="8"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintEnd_toStartOf="@id/frame_layout"
+      app:layout_constraintEnd_toStartOf="@id/control"
+      app:layout_constraintBottom_toBottomOf="parent" >
+  <com.google.mlkit.vision.demo.CameraSourcePreview
+      android:id="@+id/preview_view"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintBottom_toBottomOf="parent" />
 
   <com.google.mlkit.vision.demo.GraphicOverlay
       android:id="@+id/graphic_overlay"
-      android:layout_width="0dp"
+      android:layout_width="match_parent"
       android:layout_height="match_parent"
-      app:layout_constraintHorizontal_weight="5"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintEnd_toStartOf="@id/frame_layout"
+      app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintBottom_toBottomOf="parent" />
+  </androidx.constraintlayout.widget.ConstraintLayout>
 
   <androidx.constraintlayout.widget.ConstraintLayout
-      android:id="@id/control"
+      android:id="@+id/control"
       android:layout_width="0dp"
       android:layout_height="match_parent"
       android:background="#02457A"
       app:layout_constraintHorizontal_weight="1"
       app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintStart_toEndOf="@id/frame_layout"
+      app:layout_constraintStart_toEndOf="@id/llCameraView"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintTop_toTopOf="parent">
 
@@ -91,32 +98,32 @@
         app:layout_constraintTop_toBottomOf="@+id/settings_button" />
   </androidx.constraintlayout.widget.ConstraintLayout>
 
-  <RelativeLayout
-      android:background="@color/white"
-      android:id="@+id/relativeLayout"
-      android:layout_width="0dp"
-      android:layout_height="match_parent"
-      app:layout_constraintHorizontal_weight="4"
-      app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintStart_toEndOf="@id/preview_view"
-      app:layout_constraintEnd_toStartOf="@id/control"
-      app:layout_constraintBottom_toBottomOf="parent">
+<!--  <RelativeLayout-->
+<!--      android:background="@color/white"-->
+<!--      android:id="@+id/relativeLayout"-->
+<!--      android:layout_width="0dp"-->
+<!--      android:layout_height="match_parent"-->
+<!--      app:layout_constraintHorizontal_weight="4"-->
+<!--      app:layout_constraintTop_toTopOf="parent"-->
+<!--      app:layout_constraintStart_toEndOf="@id/llCameraView"-->
+<!--      app:layout_constraintEnd_toStartOf="@id/control"-->
+<!--      app:layout_constraintBottom_toBottomOf="parent">-->
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rtInfo"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-  </RelativeLayout>
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/rtInfo"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent" />-->
+<!--  </RelativeLayout>-->
 
-  <FrameLayout
-      android:id="@+id/frame_layout"
-      android:layout_width="0dp"
-      android:layout_height="match_parent"
-      app:layout_constraintHorizontal_weight="4"
-      app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintStart_toEndOf="@id/preview_view"
-      app:layout_constraintEnd_toStartOf="@id/control"
-      app:layout_constraintBottom_toBottomOf="parent"/>
+<!--  <FrameLayout-->
+<!--      android:id="@+id/frame_layout"-->
+<!--      android:layout_width="0dp"-->
+<!--      android:layout_height="match_parent"-->
+<!--      app:layout_constraintHorizontal_weight="4"-->
+<!--      app:layout_constraintTop_toTopOf="parent"-->
+<!--      app:layout_constraintStart_toEndOf="@id/llCameraView"-->
+<!--      app:layout_constraintEnd_toStartOf="@id/control"-->
+<!--      app:layout_constraintBottom_toBottomOf="parent"/>-->
   <com.google.android.material.switchmaterial.SwitchMaterial
       android:id="@+id/switch1"
       android:layout_width="0dp"

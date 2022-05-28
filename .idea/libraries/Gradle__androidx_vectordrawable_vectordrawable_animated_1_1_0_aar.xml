@@ -1,37 +1,12 @@
 <component name="libraryTable">
   <library name="Gradle: androidx.vectordrawable:vectordrawable-animated:1.1.0@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/Desktop/NCKH/AndroidApp/examples/lite/examples/image_classification/android/caches/transforms-2/files-2.1/5522b92f7c4cdc49315a4adbdc55a48d/vectordrawable-animated-1.1.0/res" />
-      <root url="jar://$USER_HOME$/Desktop/NCKH/AndroidApp/examples/lite/examples/image_classification/android/caches/transforms-2/files-2.1/7deb0b8d246c6d9c4546d26555493f1a/vectordrawable-animated-1.1.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/Desktop/NCKH/AndroidApp/examples/lite/examples/image_classification/android/caches/transforms-2/files-2.1/7deb0b8d246c6d9c4546d26555493f1a/vectordrawable-animated-1.1.0/res" />
-      <root url="file://$USER_HOME$/Desktop/NCKH/AndroidApp/examples/lite/examples/image_classification/android/caches/transforms-2/files-2.1/7deb0b8d246c6d9c4546d26555493f1a/vectordrawable-animated-1.1.0/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5522b92f7c4cdc49315a4adbdc55a48d/vectordrawable-animated-1.1.0/res" />
-      <root url="jar://$PROJECT_DIR$/../../../../caches/transforms-2/files-2.1/5522b92f7c4cdc49315a4adbdc55a48d/vectordrawable-animated-1.1.0/jars/classes.jar!/" />
-      <root url="file://$PROJECT_DIR$/../../../../caches/transforms-2/files-2.1/5522b92f7c4cdc49315a4adbdc55a48d/vectordrawable-animated-1.1.0/res" />
-      <root url="file://$PROJECT_DIR$/../../../../caches/transforms-2/files-2.1/5522b92f7c4cdc49315a4adbdc55a48d/vectordrawable-animated-1.1.0/AndroidManifest.xml" />
-      <root url="jar://$PROJECT_DIR$/../../../../caches/transforms-2/files-2.1/5522b92f7c4cdc49315a4adbdc55a48d/vectordrawable-animated-1.1.0/jars/classes.jar!/" />
-      <root url="file://$PROJECT_DIR$/../../../../caches/transforms-2/files-2.1/5522b92f7c4cdc49315a4adbdc55a48d/vectordrawable-animated-1.1.0/res" />
-      <root url="file://$PROJECT_DIR$/../../../../caches/transforms-2/files-2.1/5522b92f7c4cdc49315a4adbdc55a48d/vectordrawable-animated-1.1.0/AndroidManifest.xml" />
-      <root url="jar://$PROJECT_DIR$/../../../../caches/transforms-2/files-2.1/5522b92f7c4cdc49315a4adbdc55a48d/vectordrawable-animated-1.1.0/jars/classes.jar!/" />
-      <root url="file://$PROJECT_DIR$/../../../../caches/transforms-2/files-2.1/5522b92f7c4cdc49315a4adbdc55a48d/vectordrawable-animated-1.1.0/res" />
-      <root url="file://$PROJECT_DIR$/../../../../caches/transforms-2/files-2.1/5522b92f7c4cdc49315a4adbdc55a48d/vectordrawable-animated-1.1.0/AndroidManifest.xml" />
-      <root url="jar://$PROJECT_DIR$/../../../../caches/transforms-2/files-2.1/5522b92f7c4cdc49315a4adbdc55a48d/vectordrawable-animated-1.1.0/jars/classes.jar!/" />
-      <root url="file://$PROJECT_DIR$/../../../../caches/transforms-2/files-2.1/5522b92f7c4cdc49315a4adbdc55a48d/vectordrawable-animated-1.1.0/res" />
-      <root url="file://$PROJECT_DIR$/../../../../caches/transforms-2/files-2.1/5522b92f7c4cdc49315a4adbdc55a48d/vectordrawable-animated-1.1.0/AndroidManifest.xml" />
-      <root url="jar://$PROJECT_DIR$/../../../../caches/transforms-2/files-2.1/5522b92f7c4cdc49315a4adbdc55a48d/vectordrawable-animated-1.1.0/jars/classes.jar!/" />
-      <root url="file://$PROJECT_DIR$/../../../../caches/transforms-2/files-2.1/5522b92f7c4cdc49315a4adbdc55a48d/vectordrawable-animated-1.1.0/res" />
-      <root url="file://$PROJECT_DIR$/../../../../caches/transforms-2/files-2.1/5522b92f7c4cdc49315a4adbdc55a48d/vectordrawable-animated-1.1.0/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/7deb0b8d246c6d9c4546d26555493f1a/vectordrawable-animated-1.1.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/7deb0b8d246c6d9c4546d26555493f1a/vectordrawable-animated-1.1.0/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/7deb0b8d246c6d9c4546d26555493f1a/vectordrawable-animated-1.1.0/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/e647bada4db1ff669c6ed4d371be8d3e/transformed/vectordrawable-animated-1.1.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/e647bada4db1ff669c6ed4d371be8d3e/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/e647bada4db1ff669c6ed4d371be8d3e/transformed/vectordrawable-animated-1.1.0/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="jar://$PROJECT_DIR$/../../../../caches/modules-2/files-2.1/androidx.vectordrawable/vectordrawable-animated/1.1.0/871a7705cd03bc246947638c712cdd11378233ff/vectordrawable-animated-1.1.0-sources.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../../../../caches/modules-2/files-2.1/androidx.vectordrawable/vectordrawable-animated/1.1.0/871a7705cd03bc246947638c712cdd11378233ff/vectordrawable-animated-1.1.0-sources.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../../../../caches/modules-2/files-2.1/androidx.vectordrawable/vectordrawable-animated/1.1.0/871a7705cd03bc246947638c712cdd11378233ff/vectordrawable-animated-1.1.0-sources.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../../../../caches/modules-2/files-2.1/androidx.vectordrawable/vectordrawable-animated/1.1.0/871a7705cd03bc246947638c712cdd11378233ff/vectordrawable-animated-1.1.0-sources.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../../../../caches/modules-2/files-2.1/androidx.vectordrawable/vectordrawable-animated/1.1.0/871a7705cd03bc246947638c712cdd11378233ff/vectordrawable-animated-1.1.0-sources.jar!/" />
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.vectordrawable/vectordrawable-animated/1.1.0/871a7705cd03bc246947638c712cdd11378233ff/vectordrawable-animated-1.1.0-sources.jar!/" />
     </SOURCES>
   </library>

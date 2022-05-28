@@ -20,9 +20,12 @@ import android.content.Context;
 import android.graphics.PointF;
 import androidx.annotation.NonNull;
 import android.util.Log;
+import android.widget.Toast;
+
 import com.google.android.gms.tasks.Task;
 import com.google.mlkit.vision.common.InputImage;
 import com.google.mlkit.vision.demo.GraphicOverlay;
+import com.google.mlkit.vision.demo.java.LivePreviewActivity;
 import com.google.mlkit.vision.demo.java.VisionProcessorBase;
 import com.google.mlkit.vision.face.Face;
 import com.google.mlkit.vision.face.FaceContour;
@@ -41,6 +44,7 @@ public class FaceDetectorProcessor extends VisionProcessorBase<List<Face>> {
   private final FaceDetector detector;
   public double look;
   public float left, right, eulerX, eulerY, eulerZ, smile;
+  public boolean faceCheck;
 
   public FaceDetectorProcessor(Context context) {
     this(
@@ -84,6 +88,9 @@ public class FaceDetectorProcessor extends VisionProcessorBase<List<Face>> {
       eulerY = face.getHeadEulerAngleY();
       eulerZ = face.getHeadEulerAngleZ();
       logExtrasForTesting(face);
+
+      faceCheck= faces.size() > 0;
+      Log.v("ddd", "OK " + faceCheck);
 
     }
   }
@@ -184,7 +191,8 @@ public class FaceDetectorProcessor extends VisionProcessorBase<List<Face>> {
   }
 
   @Override
-  protected void onFailure(@NonNull Exception e) {
+  protected void onFailure(@NonNull Exception e, Context context) {
     Log.e(TAG, "Face detection failed " + e);
+    Toast.makeText(context, "oh no cringe", Toast.LENGTH_SHORT).show();
   }
 }

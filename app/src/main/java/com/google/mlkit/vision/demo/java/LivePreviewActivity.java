@@ -17,19 +17,25 @@
 package com.google.mlkit.vision.demo.java;
 
 
+import android.Manifest;
+import android.app.ActivityManager;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.res.Configuration;
+import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Button;
@@ -37,22 +43,22 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.collection.ArraySet;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.ActivityCompat.OnRequestPermissionsResultCallback;
 import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.common.annotation.KeepName;
+import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationResult;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.vision.face.Face;
 import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.google.gson.Gson;
@@ -65,32 +71,29 @@ import com.google.mlkit.vision.demo.R;
 import com.google.mlkit.vision.demo.ViewDialog;
 import com.google.mlkit.vision.demo.history.History;
 import com.google.mlkit.vision.demo.java.facedetector.FaceDetectorProcessor;
-import com.google.mlkit.vision.demo.map.MapsFragment;
+import com.google.mlkit.vision.demo.map.Constants;
+import com.google.mlkit.vision.demo.map.MyLocationService;
 import com.google.mlkit.vision.demo.preference.PreferenceUtils;
 import com.google.mlkit.vision.demo.preference.SettingsActivity;
 import com.google.mlkit.vision.demo.realtime_data.DataInfo;
-import com.google.mlkit.vision.demo.realtime_data.DataInfo_Adapter;
-import com.google.mlkit.vision.demo.ui.TestUi;
 import com.google.mlkit.vision.face.FaceDetectorOptions;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.lang.reflect.Type;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
-import java.util.TimeZone;
 
 /** Live preview demo for ML Kit APIs. */
 @KeepName
 public final class LivePreviewActivity extends AppCompatActivity
     implements OnRequestPermissionsResultCallback,
         OnItemSelectedListener,
-        CompoundButton.OnCheckedChangeListener, MapsFragment.onSomeEventListener {
+        CompoundButton.OnCheckedChangeListener{
   private static final String FACE_DETECTION = "Face Detection";
 
   private static final String TAG = "LivePreviewActivity";
@@ -114,7 +117,7 @@ public final class LivePreviewActivity extends AppCompatActivity
   private Button button;
 
   SwitchMaterial mySwitch;
-  boolean isOut;
+  boolean isOut, faceChecker;
   double data;
   float left, right;
   AlertCalculate check = new AlertCalculate(this, this);
@@ -127,7 +130,6 @@ public final class LivePreviewActivity extends AppCompatActivity
   private boolean running;
   private boolean wasRunning;
   private final Handler handler2 = new Handler();
-  private Runnable runnable2;
   public int delay2=10000;
   private int blinkTime;
   public boolean isWake=true;
@@ -142,56 +144,31 @@ public final class LivePreviewActivity extends AppCompatActivity
   ArrayList<History> savedList =  new ArrayList<>();
 
   int timeUsed=0;
+  ConstraintLayout llCameraView;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
+
     //hide tool bar and show in full screen
     requestWindowFeature(Window.FEATURE_NO_TITLE);
     Objects.requireNonNull(getSupportActionBar()).hide();
-    getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-            WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//    getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+//            WindowManager.LayoutParams.FLAG_FULLSCREEN);
+    View decorView = getWindow().getDecorView();
+    decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+    getWindow().setStatusBarColor(Color.TRANSPARENT);
 
+    super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_vision_live_preview);
-
     loadData();
     delay2 = PreferenceUtils.getDuration(this);
     eyesWidth = PreferenceUtils.getEyeRatio(this);
     Log.d(TAG, "onResume: "+eyesWidth+" duration "+delay2);
+    llCameraView = (ConstraintLayout) findViewById(R.id.llCameraView);
 
     viewDialog = new ViewDialog(this);
 
-    cites = readCSVData();
 
-    this.cities = findViewById(R.id.rtInfo);
-    RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
-    this.cities.setLayoutManager(mLayoutManager);
-
-    adapter = new DataInfo_Adapter(cites);
-    this.cities.setAdapter(adapter);
-    button = findViewById(R.id.button);
-    button.setOnClickListener(view -> {
-      Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("GMT+7:00"));
-      Date currentLocalTime = cal.getTime();
-      DateFormat date = new SimpleDateFormat("HH:mm a", new Locale("vi", "VN"));
-      date.setTimeZone(TimeZone.getTimeZone("GMT+7:00"));
-
-      String localTime = date.format(currentLocalTime);
-      info = dataAddress.replace(", Vietnam", "");
-      list.add(0, new DataInfo("Bạn đang ở vị trí: "+info, ""+localTime, "Phát hiện buồn ngủ: "+ (isWake?"Không":"Có")));
-      adapter.notifyItemInserted(0);
-      cities.smoothScrollToPosition(0);
-      if (startDestination==null){
-        startDestination = info;
-      }
-    });
-
-
-    handler2.postDelayed(runnable2 = () -> {
-      handler2.postDelayed(runnable2, delay2);
-      button.performClick();
-      Log.d("Handler", "run: "+delay2);
-    }, delay2);
 
     running = true;
     if (savedInstanceState != null) {
@@ -226,6 +203,7 @@ public final class LivePreviewActivity extends AppCompatActivity
     isOut = check.isLoseAttention();
     mySwitch.setOnCheckedChangeListener((compoundButton, b) -> {
       if (mySwitch.isChecked()){
+        imageCapture();
         if(!dialog.isShowing()) {
 
           if(isWake){
@@ -246,57 +224,15 @@ public final class LivePreviewActivity extends AppCompatActivity
 
 // exit yea for sure
     Button exitBtn = findViewById(R.id.exitBtn);
-    exitBtn.setOnClickListener(view -> exit());
-
-    ToggleButton facingSwitch = findViewById(R.id.facing_switch);
-
-//    create map fragment
-    FragmentTransaction ft_add = fm.beginTransaction();
-
-    int orientation = getResources().getConfiguration().orientation;
-    if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
-      ft_add.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right);
-
-    } else {
-      ft_add.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left);
-    }
-
-    ft_add.add(R.id.frame_layout, new MapsFragment(), "fragment1");
-    ft_add.commit();
-
-    Fragment fragment = fm.findFragmentById(R.id.frame_layout);
-    FragmentTransaction ft_remo = fm.beginTransaction();
-    if (fragment!=null){
-      ft_remo.hide(fragment);
-    }
-    ft_remo.commit();
-
-    //turn on/off map fragment
-    facingSwitch.setOnCheckedChangeListener((compoundButton, b) -> {
-      Fragment fragment1 = fm.findFragmentById(R.id.frame_layout);
-      FragmentTransaction ft_remo1 = fm.beginTransaction();
-      if (b) {
-        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
-          ft_remo1.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left);
-        } else {
-          ft_remo1.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right);
-        }
-        assert fragment1 != null;
-        ft_remo1.hide(fragment1);
-      } else {
-        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
-          ft_remo1.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right);
-
-        } else {
-          ft_remo1.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left);
-        }
-        assert fragment1 != null;
-        ft_remo1.show(fragment1);
-      }
-      ft_remo1.commit();
+    exitBtn.setOnClickListener(view -> {
+//      exit();
+      getLocation();
     });
 
+
+
     //open setting
+
     ImageView settingsButton = findViewById(R.id.settings_button);
     settingsButton.setOnClickListener(
         v -> {
@@ -304,14 +240,25 @@ public final class LivePreviewActivity extends AppCompatActivity
           intent.putExtra(
               SettingsActivity.EXTRA_LAUNCH_SOURCE, SettingsActivity.LaunchSource.LIVE_PREVIEW);
           startActivity(intent);
+
         });
 //check permission - if granted, do detect
     if (allPermissionsGranted()) {
       createCameraSource(selectedModel);
+
     } else {
       getRuntimePermissions();
     }
 
+    if(ContextCompat.checkSelfPermission(
+            getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION
+    ) != PackageManager.PERMISSION_GRANTED){
+      ActivityCompat.requestPermissions(
+              LivePreviewActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, PERMISSION_REQUESTS
+      );
+    }else{
+      startLocationService();
+    }
   }
 
   @Override
@@ -421,8 +368,9 @@ public final class LivePreviewActivity extends AppCompatActivity
     data = processor.look;
     left = processor.left;
     right = processor.right;
+    faceChecker = processor.faceCheck;
 //    Toast.makeText(this, "Here is data"+lOrR, Toast.LENGTH_SHORT).show();
-    Log.v("ddd", "OK " + data);
+//    Log.v("ddd", "OK " + faceChecker);
     Log.v("ddd", "eye " + value);
     sleepDetection();
 
@@ -527,9 +475,9 @@ public final class LivePreviewActivity extends AppCompatActivity
     if (cameraSource != null) {
       cameraSource.release();
     }
+    stopLocationService();
     Log.d(TAG, "onDestroy");
     handler.removeCallbacks(runnable);
-    handler2.removeCallbacks(runnable2);
   }
 
   private String[] getRequiredPermissions() {
@@ -673,17 +621,6 @@ public final class LivePreviewActivity extends AppCompatActivity
     return list;
   }
 
-  @Override
-  public void someEvent(String s, String speed) {
-    if (s !=null){
-      dataAddress = s;
-    }
-
-    else dataAddress = "Chưa xác định";
-//    speed_stats.setText("Speed: "+speed);
-    Log.d("Data", "data from fragment "+s);
-  }
-
   public void exit(){
     new AlertDialog.Builder(LivePreviewActivity.this)
       .setIcon(android.R.drawable.ic_dialog_alert)
@@ -697,6 +634,8 @@ public final class LivePreviewActivity extends AppCompatActivity
         savedList.add(new History("Điểm đầu: "+startDestination, "Điểm cuối: "+endDestination, "Tổng thời gian đã đi: "+totalTime, "Số lần phát hiện buồn ngủ: "+sleepyCount+" lần"));
         saveData();
         Log.d("TAG", "exit: "+startDestination+endDestination+totalTime+sleepyCount);
+        cameraSource.release();
+        stopLocationService();
         finish();
       })
       .setNegativeButton(R.string.no, null)
@@ -758,5 +697,98 @@ public final class LivePreviewActivity extends AppCompatActivity
       // creating a new array list.
       savedList = new ArrayList<>();
     }
+  }
+
+  private void imageCapture(){
+    ContextWrapper wrapper = new ContextWrapper(getApplicationContext());
+    File file = wrapper.getDir("Images", MODE_PRIVATE);
+    file = new File(file, "UniqueFileName"+".jpg");
+
+
+    llCameraView.buildDrawingCache();
+    Bitmap captureView;
+    llCameraView.setDrawingCacheEnabled(true);
+    captureView = Bitmap.createBitmap(llCameraView.getDrawingCache());
+    llCameraView.setDrawingCacheEnabled(false);
+
+
+    try{
+      OutputStream stream = null;
+      stream = new FileOutputStream(file);
+      captureView.compress(Bitmap.CompressFormat.JPEG,100,stream);
+      stream.flush();
+      stream.close();
+      Toast.makeText(getApplicationContext(), "Captured!", Toast.LENGTH_LONG).show();
+    }catch (IOException e) // Catch the exception
+    {
+      e.printStackTrace();
+      Toast.makeText(getApplicationContext(), "Failed!", Toast.LENGTH_LONG).show();
+    }
+  }
+
+  private boolean isLocationServiceRunning(){
+    ActivityManager activityManager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+    if(activityManager != null){
+      for(ActivityManager.RunningServiceInfo service : activityManager.getRunningServices(Integer.MAX_VALUE)){
+        if(MyLocationService.class.getName().equals(service.service.getClassName())){
+          if(service.foreground){
+            return true;
+          }
+        }
+      }
+      return false;
+    }
+    return false;
+  }
+
+  private void startLocationService(){
+    if(!isLocationServiceRunning()){
+      Intent intent = new Intent(getApplicationContext(), MyLocationService.class);
+      intent.setAction("startLocationService");
+      startService(intent);
+      Toast.makeText(LivePreviewActivity.this, "Location service started", Toast.LENGTH_SHORT).show();
+    }
+  }
+
+  private void stopLocationService(){
+    if(isLocationServiceRunning()){
+      Intent intent = new Intent(getApplicationContext(), MyLocationService.class);
+      intent.setAction("stopLocationService");
+      startService(intent);
+      Toast.makeText(LivePreviewActivity.this, "Location service stopped", Toast.LENGTH_SHORT).show();
+    }
+  }
+  String locate;
+  public void getLocation(){
+    final LocationCallback mLocationCallback = new LocationCallback() {
+      @Override
+      public void onLocationResult(LocationResult locationResult) {
+        List<Location> locationList = locationResult.getLocations();
+        if (locationList.size() > 0) {
+          //The last location in the list is the newest
+          Location location = locationList.get(locationList.size() - 1);
+          Log.i("MapsActivity", "Location: " + location.getLatitude() + " " + location.getLongitude());
+
+          //Place current location marker
+          LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
+
+
+          try {
+            Geocoder geocoder = new Geocoder(getApplicationContext(), Locale.getDefault());
+            List<Address> addresses = geocoder.getFromLocation(latLng.latitude, latLng.longitude, 1);
+            if (addresses.size() > 0) {
+              Address address = addresses.get(0);
+              locate = address.getAddressLine(0);
+//                            sb.append(address.getAddressLine(0));
+            }
+            Toast.makeText(LivePreviewActivity.this, ""+locate, Toast.LENGTH_SHORT).show();
+
+          } catch (IOException e) {
+            e.printStackTrace();
+          }
+        }
+
+      }
+    };
   }
 }

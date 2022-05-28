@@ -71,48 +71,48 @@ public class InferenceInfoGraphic extends GraphicOverlay.Graphic {
 
 
 
-    //Draw border for text
-    canvas.drawText(
-            "InputImage size: " + overlay.getImageHeight() + "x" + overlay.getImageWidth(),
-            x,
-            y,
-            stkPaint);
-
-    // Draw FPS (if valid) and inference latency
-    if (framesPerSecond != null) {
-      canvas.drawText(
-              "FPS: " + framesPerSecond + ", Frame latency: " + frameLatency + " ms",
-              x,
-              y + TEXT_SIZE,
-              stkPaint);
-      canvas.drawText(
-              "Detector latency: " + detectorLatency + " ms", x, y + TEXT_SIZE * 2, stkPaint);
-    } else {
-      canvas.drawText("Frame latency: " + frameLatency + " ms", x, y + TEXT_SIZE, stkPaint);
-
-    }
-
-
-    //Draw text
-    canvas.drawText(
-        "InputImage size: " + overlay.getImageHeight() + "x" + overlay.getImageWidth(),
-        x,
-        y,
-        textPaint);
-
-    // Draw FPS (if valid) and inference latency
-    if (framesPerSecond != null) {
-      canvas.drawText(
-          "FPS: " + framesPerSecond + ", Frame latency: " + frameLatency + " ms",
-          x,
-          y + TEXT_SIZE,
-          textPaint);
-      canvas.drawText(
-          "Detector latency: " + detectorLatency + " ms", x, y + TEXT_SIZE * 2, textPaint);
-    } else {
-      canvas.drawText("Frame latency: " + frameLatency + " ms", x, y + TEXT_SIZE, textPaint);
-
-    }
+//    //Draw border for text
+//    canvas.drawText(
+//            "InputImage size: " + overlay.getImageHeight() + "x" + overlay.getImageWidth(),
+//            x,
+//            y,
+//            stkPaint);
+//
+//    // Draw FPS (if valid) and inference latency
+//    if (framesPerSecond != null) {
+//      canvas.drawText(
+//              "FPS: " + framesPerSecond + ", Frame latency: " + frameLatency + " ms",
+//              x,
+//              y + TEXT_SIZE,
+//              stkPaint);
+//      canvas.drawText(
+//              "Detector latency: " + detectorLatency + " ms", x, y + TEXT_SIZE * 2, stkPaint);
+//    } else {
+//      canvas.drawText("Frame latency: " + frameLatency + " ms", x, y + TEXT_SIZE, stkPaint);
+//
+//    }
+//
+//
+//    //Draw text
+//    canvas.drawText(
+//        "InputImage size: " + overlay.getImageHeight() + "x" + overlay.getImageWidth(),
+//        x,
+//        y,
+//        textPaint);
+//
+//    // Draw FPS (if valid) and inference latency
+//    if (framesPerSecond != null) {
+//      canvas.drawText(
+//          "FPS: " + framesPerSecond + ", Frame latency: " + frameLatency + " ms",
+//          x,
+//          y + TEXT_SIZE,
+//          textPaint);
+//      canvas.drawText(
+//          "Detector latency: " + detectorLatency + " ms", x, y + TEXT_SIZE * 2, textPaint);
+//    } else {
+//      canvas.drawText("Frame latency: " + frameLatency + " ms", x, y + TEXT_SIZE, textPaint);
+//
+//    }
 
   }
 }

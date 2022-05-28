@@ -81,7 +81,7 @@ public class ViewDialog extends Dialog {
         text_tips.setText("Hãy dừng xe uống nước hoặc rửa mặt để cảm thấy tỉnh táo rồi tiếp tục lái xe nhé");
         alertCalculate.startVibrate();
         dialog.setCanceledOnTouchOutside(false);
-        MediaPlayer mp = MediaPlayer.create(getContext(), R.raw.rickroll);
+        MediaPlayer mp = MediaPlayer.create(getContext(), R.raw.khobau);
         mp.setLooping(true);
         mp.start();
         Button dialogButton = dialog.findViewById(R.id.btn_dialog);

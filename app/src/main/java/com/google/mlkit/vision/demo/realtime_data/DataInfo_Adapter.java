@@ -1,13 +1,16 @@
 package com.google.mlkit.vision.demo.realtime_data;
 
 import android.graphics.Color;
+import android.media.MediaRouter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.mlkit.vision.demo.R;
@@ -36,14 +39,7 @@ public class DataInfo_Adapter extends RecyclerView.Adapter<DataInfo_Adapter.View
         holder.location.setText(data.getLocation());
         holder.realtime.setText(data.getrTime());
         holder.counter.setText(data.getCounter());
-
-        if (!data.getCounter().equals("Phát hiện buồn ngủ: Không")){
-            holder.cardView.setCardBackgroundColor(Color.RED);
-        }
-        else{
-            holder.cardView.setCardBackgroundColor(Color.parseColor("#378EE8"));
-        }
-
+        holder.cardView.setCardBackgroundColor(Color.parseColor("#378EE8"));
     }
 
     @Override
@@ -71,4 +67,6 @@ public class DataInfo_Adapter extends RecyclerView.Adapter<DataInfo_Adapter.View
             cardView = view.findViewById(R.id.cardView);
         }
     }
+
+
 }

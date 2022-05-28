@@ -1,16 +1,12 @@
 <component name="libraryTable">
   <library name="Gradle: androidx.slidingpanelayout:slidingpanelayout:1.2.0@aar">
     <ANNOTATIONS>
-      <root url="jar://$PROJECT_DIR$/../../../../caches/transforms-2/files-2.1/90db818c0f9f02d33f6f8780e7f72522/slidingpanelayout-1.2.0/annotations.zip!/" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/c1f7296e7af0c043544afc16cf45e5b0/slidingpanelayout-1.2.0/annotations.zip!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/d638ce893bc3c101211eeb65253af4ab/transformed/slidingpanelayout-1.2.0/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
-      <root url="file://$PROJECT_DIR$/../../../../caches/transforms-2/files-2.1/90db818c0f9f02d33f6f8780e7f72522/slidingpanelayout-1.2.0/res" />
-      <root url="file://$PROJECT_DIR$/../../../../caches/transforms-2/files-2.1/90db818c0f9f02d33f6f8780e7f72522/slidingpanelayout-1.2.0/AndroidManifest.xml" />
-      <root url="jar://$PROJECT_DIR$/../../../../caches/transforms-2/files-2.1/90db818c0f9f02d33f6f8780e7f72522/slidingpanelayout-1.2.0/jars/classes.jar!/" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/c1f7296e7af0c043544afc16cf45e5b0/slidingpanelayout-1.2.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/c1f7296e7af0c043544afc16cf45e5b0/slidingpanelayout-1.2.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/c1f7296e7af0c043544afc16cf45e5b0/slidingpanelayout-1.2.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/d638ce893bc3c101211eeb65253af4ab/transformed/slidingpanelayout-1.2.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/d638ce893bc3c101211eeb65253af4ab/transformed/slidingpanelayout-1.2.0/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/d638ce893bc3c101211eeb65253af4ab/transformed/slidingpanelayout-1.2.0/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

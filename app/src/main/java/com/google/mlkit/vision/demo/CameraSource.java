@@ -16,10 +16,15 @@
 
 package com.google.mlkit.vision.demo;
 
+import static android.os.Environment.getExternalStorageDirectory;
+
+import static java.io.File.separator;
+
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.BitmapFactory;
 import android.graphics.ImageFormat;
 import android.graphics.SurfaceTexture;
 import android.hardware.Camera;
@@ -30,11 +35,18 @@ import android.util.Log;
 import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.WindowManager;
+import android.widget.Toast;
+
 import com.google.android.gms.common.images.Size;
 import com.google.mlkit.vision.demo.preference.PreferenceUtils;
+
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.IdentityHashMap;
 import java.util.List;
 
@@ -703,4 +715,37 @@ public class CameraSource {
   private void cleanScreen() {
     graphicOverlay.clear();
   }
+  public void takeImage(){
+    camera.takePicture(null, null, new Camera.PictureCallback() {
+      @Override
+      public void onPictureTaken(byte[] bytes, Camera camera) {
+        Log.d(TAG, "onPictureTaken - jpeg");
+        capturePic(bytes);
+      }
+
+      private void capturePic(byte[] bytes) {
+        try {
+          String mainpath = getExternalStorageDirectory() + separator + "MaskIt" + separator + "images" + separator;
+          File basePath = new File(mainpath);
+          if (!basePath.exists())
+            Log.d("CAPTURE_BASE_PATH", basePath.mkdirs() ? "Success": "Failed");
+          File captureFile = new File(mainpath + "photo_" + getPhotoTime() + ".jpg");
+          if (!captureFile.exists())
+            Log.d("CAPTURE_FILE_PATH", captureFile.createNewFile() ? "Success": "Failed");
+          FileOutputStream stream = new FileOutputStream(captureFile);
+          stream.write(bytes);
+          stream.flush();
+          stream.close();
+        } catch (IOException e) {
+          e.printStackTrace();
+        }
+      }
+
+      private String getPhotoTime(){
+        SimpleDateFormat sdf=new SimpleDateFormat("ddMMyy_hhmmss");
+        return sdf.format(new Date());
+      }
+    });
+  }
 }
+

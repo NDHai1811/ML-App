@@ -278,7 +278,7 @@ public abstract class VisionProcessorBase<T> implements VisionImageProcessor {
                   .show();
               Log.d(TAG, error);
               e.printStackTrace();
-              VisionProcessorBase.this.onFailure(e);
+              VisionProcessorBase.this.onFailure(e, graphicOverlay.getContext());
             });
   }
 
@@ -296,5 +296,5 @@ public abstract class VisionProcessorBase<T> implements VisionImageProcessor {
 
   protected abstract void onSuccess(@NonNull T results, @NonNull GraphicOverlay graphicOverlay);
 
-  protected abstract void onFailure(@NonNull Exception e);
+  protected abstract void onFailure(@NonNull Exception e, Context context);
 }

@@ -1,13 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.google.mlkit:common:18.1.0@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/3dc5234b26524b32aa9a0d2c907ac1d2/jetified-common-18.1.0/res" />
-      <root url="file://$PROJECT_DIR$/../../../../caches/transforms-2/files-2.1/3dc5234b26524b32aa9a0d2c907ac1d2/jetified-common-18.1.0/res" />
-      <root url="jar://$PROJECT_DIR$/../../../../caches/transforms-2/files-2.1/3dc5234b26524b32aa9a0d2c907ac1d2/jetified-common-18.1.0/jars/classes.jar!/" />
-      <root url="file://$PROJECT_DIR$/../../../../caches/transforms-2/files-2.1/3dc5234b26524b32aa9a0d2c907ac1d2/jetified-common-18.1.0/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/85df6f23f8215a840e366713db0f3eb2/jetified-common-18.1.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/85df6f23f8215a840e366713db0f3eb2/jetified-common-18.1.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/85df6f23f8215a840e366713db0f3eb2/jetified-common-18.1.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/f0ebb2326897267328faee0a11efcca2/transformed/jetified-common-18.1.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/f0ebb2326897267328faee0a11efcca2/transformed/jetified-common-18.1.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/f0ebb2326897267328faee0a11efcca2/transformed/jetified-common-18.1.0/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.mlkit/common/18.1.0/abc9db38026fa7930dd499315601ebfd19ef180d/common-18.1.0-javadoc.jar!/" />
