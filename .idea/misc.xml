@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/CPC/ML-App/app/src/main/res/layout/activity_notifi_container.xml" value="0.13496376811594202" />
+        <entry key="..\:/Users/CPC/ML-App/app/src/main/res/layout/noti_detail.xml" value="0.25" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/ML-App/app/src/main/res/drawable-hdpi/ic_person_white_24dp.xml" value="0.1715" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/ML-App/app/src/main/res/drawable-mdpi/layout_bg.xml" value="0.225" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/ML-App/app/src/main/res/drawable-xxxhdpi/alert_sleepy.xml" value="0.1095" />
