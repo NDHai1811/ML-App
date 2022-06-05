@@ -6,8 +6,16 @@ public class History {
     String ketthuc;
     String thoigian;
     String key;
+    String ngaythang;
 
 
+    public String getNgaythang() {
+        return ngaythang;
+    }
+
+    public void setNgaythang(String ngaythang) {
+        this.ngaythang = ngaythang;
+    }
 
     public String getKey() {
         return key;
@@ -49,11 +57,12 @@ public class History {
         this.thoigian = thoigian;
     }
 
-    public History(String title, String startDestination, String endDestination, String totalTime) {
+    public History(String title, String startDestination, String endDestination, String totalTime, String ngaythang) {
         this.tieude = title;
         this.batdau = startDestination;
         this.ketthuc = endDestination;
         this.thoigian = totalTime;
+        this.ngaythang = ngaythang;
     }
 
     public History() {

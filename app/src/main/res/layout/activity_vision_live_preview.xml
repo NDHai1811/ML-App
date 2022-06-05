@@ -1,149 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/parent_layout"
+    android:id="@+id/topLayout"
+    android:background="#000000"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:keepScreenOn="true">
-  <androidx.constraintlayout.widget.ConstraintLayout
-      android:id="@+id/llCameraView"
-      android:layout_width="match_parent"
-      android:layout_height="0dp"
-      app:layout_constraintVertical_weight="9"
-      app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintLeft_toLeftOf="parent"
-      app:layout_constraintRight_toRightOf="parent"
-      app:layout_constraintBottom_toTopOf="@id/control">
-  <com.google.mlkit.vision.demo.CameraSourcePreview
-      android:id="@+id/preview_view"
-      android:layout_width="match_parent"
-      android:layout_height="0dp"
-      app:layout_constraintVertical_weight="5"
-      app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintLeft_toLeftOf="parent"
-      app:layout_constraintRight_toRightOf="parent"
-      app:layout_constraintBottom_toBottomOf="@id/llCameraView">
 
-
-  </com.google.mlkit.vision.demo.CameraSourcePreview>
-
-  <com.google.mlkit.vision.demo.GraphicOverlay
-      android:id="@+id/graphic_overlay"
-      android:layout_width="match_parent"
-      android:layout_height="0dp"
-      app:layout_constraintVertical_weight="5"
-      app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintLeft_toLeftOf="parent"
-      app:layout_constraintRight_toRightOf="parent"
-      app:layout_constraintBottom_toBottomOf="@id/preview_view" />
-  </androidx.constraintlayout.widget.ConstraintLayout>
-  <androidx.constraintlayout.widget.ConstraintLayout
-      android:id="@+id/control"
-      android:layout_width="match_parent"
-      android:layout_height="0dp"
-      android:background="#02457A"
-      app:layout_constraintVertical_weight="1"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintLeft_toLeftOf="parent"
-      app:layout_constraintRight_toRightOf="parent"
-      app:layout_constraintTop_toBottomOf="@id/llCameraView">
-
-    <ImageView
-        android:id="@+id/settings_button"
-        android:layout_width="70dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="bottom|end"
-        android:contentDescription="@string/menu_item_settings"
-        android:padding="12dp"
-        android:src="@drawable/ic_settings_white_24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/exitBtn"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/camera"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="exit"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/settings_button"
-        app:layout_constraintStart_toStartOf="@+id/facing_switch"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ToggleButton
-        android:id="@+id/facing_switch"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_gravity="center_vertical"
-        android:background="@layout/toggle_style"
-        android:checked="false"
-        android:textOff=""
-        android:textOn=""
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_centerInParent="true"
+        android:innerRadius="0dp"
+        android:shape="oval"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/tableRow"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="invisible">
 
-    <TextView
-        android:id="@+id/countdown_text"
-        android:layout_width="89dp"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="10:00"
-        android:textColor="@color/white"
-        android:textSize="20sp"
+        <com.google.mlkit.vision.demo.CameraSourcePreview
+            android:id="@+id/preview"
+            android:layout_width="300dp"
+            android:layout_height="400dp"
+            android:layout_gravity="center"
+            app:layout_constraintBottom_toTopOf="@+id/tableRow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.mlkit.vision.demo.GraphicOverlay
+                android:id="@+id/faceOverlay"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </com.google.mlkit.vision.demo.CameraSourcePreview>
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/tableRow"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentTop="false"
+        android:layout_alignParentBottom="true"
+        android:layout_weight="0"
+        android:background="#00BCD4"
+        android:gravity="center|center_horizontal"
+        android:weightSum="2"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/facing_switch"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteX="-156dp">
 
+        <ImageView
+            android:id="@+id/button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/exit"
+            android:layout_marginRight="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-  </androidx.constraintlayout.widget.ConstraintLayout>
+        <ToggleButton
+            android:id="@+id/toggleButton"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New ToggleButton"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Trạng thái: "
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-<!--  <RelativeLayout-->
-<!--      android:background="@color/white"-->
-<!--      android:id="@+id/relativeLayout"-->
-<!--      android:layout_width="match_parent"-->
-<!--      android:layout_height="0dp"-->
-<!--      app:layout_constraintVertical_weight="4"-->
-<!--      app:layout_constraintBottom_toTopOf="@+id/control"-->
-<!--      app:layout_constraintLeft_toLeftOf="parent"-->
-<!--      app:layout_constraintRight_toRightOf="parent"-->
-<!--      app:layout_constraintTop_toBottomOf="@id/llCameraView">-->
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            app:layout_constraintStart_toEndOf="@+id/textView3"
+            app:layout_constraintTop_toTopOf="parent" />
 
-<!--    <androidx.recyclerview.widget.RecyclerView-->
-<!--        android:id="@+id/rtInfo"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent" />-->
-<!--  </RelativeLayout>-->
+        <TextView
+            android:id="@+id/clock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Timer"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/toggleButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-<!--  <FrameLayout-->
-<!--      android:id="@+id/frame_layout"-->
-<!--      android:layout_width="match_parent"-->
-<!--      android:layout_height="0dp"-->
-<!--      app:layout_constraintVertical_weight="4"-->
-<!--      app:layout_constraintBottom_toTopOf="@+id/control"-->
-<!--      app:layout_constraintLeft_toLeftOf="parent"-->
-<!--      app:layout_constraintRight_toRightOf="parent"-->
-<!--      app:layout_constraintTop_toBottomOf="@id/llCameraView"-->
-<!--      app:layout_constraintStart_toStartOf="parent" />-->
-  <com.google.android.material.switchmaterial.SwitchMaterial
-      android:id="@+id/switch1"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      app:layout_constraintTop_toTopOf="@+id/llCameraView"
-      app:layout_constraintEnd_toStartOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      android:visibility="gone"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-  <Button
-      android:id="@+id/button"
-      android:layout_width="0dp"
-      android:layout_height="0dp"
-      android:text="Button"
-      app:layout_constraintTop_toTopOf="@+id/llCameraView"
-      app:layout_constraintEnd_toStartOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      android:visibility="gone"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/tableRow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+        <pl.droidsonroids.gif.GifImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/road23"/>
+
+        <pl.droidsonroids.gif.GifTextView
+            android:layout_width="300dp"
+            android:layout_height="400dp"
+            android:gravity="center"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/steerinwheel" />
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+

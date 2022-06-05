@@ -150,6 +150,6 @@
         <activity
             android:name=".preference.SettingsActivity"
             android:exported="false" />
-    </application>
+        </application>
 
-</manifest>
+    </manifest>

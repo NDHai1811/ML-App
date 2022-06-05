@@ -271,10 +271,10 @@ public class CameraSource {
     SizePair sizePair = PreferenceUtils.getCameraPreviewSizePair(activity, requestedCameraId);
     if (sizePair == null) {
       sizePair =
-          selectSizePair(
-              camera,
-              DEFAULT_REQUESTED_CAMERA_PREVIEW_WIDTH,
-              DEFAULT_REQUESTED_CAMERA_PREVIEW_HEIGHT);
+              selectSizePair(
+                      camera,
+                      DEFAULT_REQUESTED_CAMERA_PREVIEW_WIDTH,
+                      DEFAULT_REQUESTED_CAMERA_PREVIEW_HEIGHT);
     }
 
     if (sizePair == null) {
@@ -298,8 +298,8 @@ public class CameraSource {
     }
     parameters.setPreviewSize(previewSize.getWidth(), previewSize.getHeight());
     parameters.setPreviewFpsRange(
-        previewFpsRange[Camera.Parameters.PREVIEW_FPS_MIN_INDEX],
-        previewFpsRange[Camera.Parameters.PREVIEW_FPS_MAX_INDEX]);
+            previewFpsRange[Camera.Parameters.PREVIEW_FPS_MIN_INDEX],
+            previewFpsRange[Camera.Parameters.PREVIEW_FPS_MAX_INDEX]);
     // Use YV12 so that we can exercise YV12->NV21 auto-conversion logic for OCR detection
     parameters.setPreviewFormat(IMAGE_FORMAT);
 
@@ -307,8 +307,8 @@ public class CameraSource {
 
     if (REQUESTED_AUTO_FOCUS) {
       if (parameters
-          .getSupportedFocusModes()
-          .contains(Camera.Parameters.FOCUS_MODE_CONTINUOUS_VIDEO)) {
+              .getSupportedFocusModes()
+              .contains(Camera.Parameters.FOCUS_MODE_CONTINUOUS_VIDEO)) {
         parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_VIDEO);
       } else {
         Log.i(TAG, "Camera auto focus is not supported on this device.");
@@ -379,7 +379,7 @@ public class CameraSource {
     for (SizePair sizePair : validPreviewSizes) {
       Size size = sizePair.preview;
       int diff =
-          Math.abs(size.getWidth() - desiredWidth) + Math.abs(size.getHeight() - desiredHeight);
+              Math.abs(size.getWidth() - desiredWidth) + Math.abs(size.getHeight() - desiredHeight);
       if (diff < minDiff) {
         selectedPair = sizePair;
         minDiff = diff;
@@ -476,7 +476,7 @@ public class CameraSource {
     List<int[]> previewFpsRangeList = camera.getParameters().getSupportedPreviewFpsRange();
     for (int[] range : previewFpsRangeList) {
       int upperBoundDiff =
-          Math.abs(desiredPreviewFpsScaled - range[Camera.Parameters.PREVIEW_FPS_MAX_INDEX]);
+              Math.abs(desiredPreviewFpsScaled - range[Camera.Parameters.PREVIEW_FPS_MAX_INDEX]);
       int lowerBound = range[Camera.Parameters.PREVIEW_FPS_MIN_INDEX];
       if (upperBoundDiff <= minUpperBoundDiff && lowerBound <= minLowerBound) {
         selectedFpsRange = range;
@@ -627,9 +627,9 @@ public class CameraSource {
 
         if (!bytesToByteBuffer.containsKey(data)) {
           Log.d(
-              TAG,
-              "Skipping frame. Could not find ByteBuffer associated with the image "
-                  + "data from the camera.");
+                  TAG,
+                  "Skipping frame. Could not find ByteBuffer associated with the image "
+                          + "data from the camera.");
           return;
         }
 
@@ -694,13 +694,13 @@ public class CameraSource {
         try {
           synchronized (processorLock) {
             frameProcessor.processByteBuffer(
-                data,
-                new FrameMetadata.Builder()
-                    .setWidth(previewSize.getWidth())
-                    .setHeight(previewSize.getHeight())
-                    .setRotation(rotationDegrees)
-                    .build(),
-                graphicOverlay);
+                    data,
+                    new FrameMetadata.Builder()
+                            .setWidth(previewSize.getWidth())
+                            .setHeight(previewSize.getHeight())
+                            .setRotation(rotationDegrees)
+                            .build(),
+                    graphicOverlay);
           }
         } catch (Exception t) {
           Log.e(TAG, "Exception thrown from receiver.", t);

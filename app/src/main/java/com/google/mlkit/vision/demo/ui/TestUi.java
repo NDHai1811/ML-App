@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -58,6 +59,7 @@ public class TestUi extends AppCompatActivity {
     String key =null;
     Bitmap icon;
     int position;
+    TextView info;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +69,7 @@ public class TestUi extends AppCompatActivity {
 
 //        init();
 
+        info = findViewById(R.id.textView5);
         historyRV = findViewById(R.id.historyRV);
         historyRV.setHasFixedSize(true);
         adapter = new History_Adapter(this, list);
@@ -115,12 +118,12 @@ public class TestUi extends AppCompatActivity {
                 if (dX < 0) {
                     Paint p = new Paint();
                     p.setColor(Color.RED);
-                                // Fix position for button
+                    RecyclerView.LayoutParams lp = (RecyclerView.LayoutParams) itemView.getLayoutParams();
+                    Log.d("TAG", "Params: "+lp.topMargin+" "+lp.bottomMargin);
                     float deleteButtonLeft = itemView.getRight() - (itemView.getRight() / 5f);
-                    float deleteButtonTop = itemView.getTop();
+                    float deleteButtonTop = itemView.getTop() + lp.topMargin+10;
                     float deleteButtonRight = itemView.getRight() - itemView.getPaddingRight();
-                    float deleteButtonBottom = itemView.getBottom();
-
+                    float deleteButtonBottom = itemView.getBottom() - lp.bottomMargin-10;
 
                     // Draw a button
                     float radius = 15f;
@@ -262,7 +265,7 @@ public class TestUi extends AppCompatActivity {
                     if (motionEvent.getAction() == MotionEvent.ACTION_DOWN && motionEvent.getY() > item.getY() && motionEvent.getY() < item.getY() + item.getHeight()
                             && motionEvent.getX() > item.getX() + item.getWidth() && !moving) {
                         if (deleteButtonVisible) {
-                            Toast.makeText(getApplicationContext(), "Click to Button Delete " + posSwiped, Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(getApplicationContext(), "Click to Button Delete " + posSwiped, Toast.LENGTH_SHORT).show();
                             new AlertDialog.Builder(TestUi.this)
                                     .setTitle("Nhac nho")
                                     .setMessage("Ban co chac muon xoa lich trinh nay?")
@@ -280,7 +283,7 @@ public class TestUi extends AppCompatActivity {
                                             adapter.notifyItemRemoved(posSwiped);
                                             adapter.notifyItemRangeChanged(posSwiped, list.size());
                                             deleteButtonVisible = false;
-                                            Toast.makeText(TestUi.this, "Done!", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(TestUi.this, "Đã xoá!", Toast.LENGTH_SHORT).show();
                                         }})
                                     .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
                                         @Override
@@ -341,6 +344,7 @@ public class TestUi extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot)
             {
+                info.setVisibility(View.GONE);
                 ArrayList<History> emps = new ArrayList<>();
                 for (DataSnapshot data : snapshot.getChildren())
                 {
@@ -356,7 +360,8 @@ public class TestUi extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error)
             {
-                swipeRefreshLayout.setRefreshing(false);
+                info.setVisibility(View.VISIBLE);
+//                swipeRefreshLayout.setRefreshing(false);
             }
         });
     }

@@ -1,6 +1,8 @@
 package com.google.mlkit.vision.demo.map;
 
-public class LatLong {
+import java.io.Serializable;
+
+public class LatLong implements Serializable {
     public double latitude;
     public double longitude;
 

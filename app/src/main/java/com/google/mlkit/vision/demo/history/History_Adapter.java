@@ -50,8 +50,12 @@ public class History_Adapter extends RecyclerView.Adapter<History_Adapter.ViewHo
         holder.start.setText("Bắt đầu: "+data.getBatdau());
         holder.end.setText("Kết thúc: "+data.getKetthuc());
         holder.totalTime.setText("Thời gian đã đi: "+data.getThoigian());
-
-        holder.cardView.setCardBackgroundColor(Color.parseColor("#378EE8"));
+        String[] datetime = data.getNgaythang().split(" ", 2);
+        String[] arrOfStr = datetime[0].split("-");
+        holder.daynmonth.setText((arrOfStr[0]+"/"+arrOfStr[1]));
+        holder.year.setText(arrOfStr[2]);
+        holder.time.setText(datetime[1]);
+//        holder.cardView.setCardBackgroundColor(Color.parseColor("#378EE8"));
 
         View view = holder.itemView;
         view.setOnClickListener(new View.OnClickListener() {
@@ -65,7 +69,6 @@ public class History_Adapter extends RecyclerView.Adapter<History_Adapter.ViewHo
                 intent.putExtra("end", data.getKetthuc());
                 intent.putExtra("time", data.getThoigian());
                 mContext.startActivity(intent);
-                Toast.makeText(view.getContext(), ""+data.getKey(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -85,6 +88,7 @@ public class History_Adapter extends RecyclerView.Adapter<History_Adapter.ViewHo
         public final TextView start;
         public final TextView end;
         public final TextView totalTime;
+        public final TextView daynmonth, year, time;
         public final CardView cardView;
 
         public ViewHolder(View view) {
@@ -95,6 +99,9 @@ public class History_Adapter extends RecyclerView.Adapter<History_Adapter.ViewHo
             end = view.findViewById(R.id.end);
             totalTime = view.findViewById(R.id.totalTime);
             cardView = view.findViewById(R.id.cardView);
+            daynmonth = view.findViewById(R.id.daynmonth);
+            year = view.findViewById(R.id.year);
+            time = view.findViewById(R.id.time);
         }
     }
 }

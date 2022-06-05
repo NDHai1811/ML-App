@@ -6,8 +6,8 @@
     </stroke>
     <gradient
         android:angle="270"
-        android:endColor="@color/red"
-        android:startColor="@color/red"/>
+        android:endColor="@color/white"
+        android:startColor="@color/white"/>
     <corners
         android:radius="20dp"/>
 </shape>

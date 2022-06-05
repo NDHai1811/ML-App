@@ -73,7 +73,7 @@ public class MapContainer extends AppCompatActivity implements OnMapReadyCallbac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map_container);
 
-        progressBar = findViewById(R.id.progressBar2);
+        progressBar = findViewById(R.id.progressBar);
         editText = findViewById(R.id.title);
         start = findViewById(R.id.start);
         end = findViewById(R.id.end);
@@ -82,7 +82,11 @@ public class MapContainer extends AppCompatActivity implements OnMapReadyCallbac
         img = findViewById(R.id.icon);
         editIcon = findViewById(R.id.editIcon);
         SlidingUpPanelLayout layout = findViewById(R.id.slidingUp);
-
+        View view = this.getCurrentFocus();
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
         editIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -166,9 +170,9 @@ public class MapContainer extends AppCompatActivity implements OnMapReadyCallbac
         if(intent.hasExtra("key")&&intent.hasExtra("title")&&intent.hasExtra("start")&&intent.hasExtra("end")&&intent.hasExtra("time")){
             key = intent.getStringExtra("key");
             editText.setText(intent.getStringExtra("title"));
-            start.setText(intent.getStringExtra("start"));
-            end.setText(intent.getStringExtra("end"));
-            time.setText(intent.getStringExtra("time"));
+            start.setText("Bắt đầu tại: "+intent.getStringExtra("start"));
+            end.setText("Kết thúc tại: "+intent.getStringExtra("end"));
+            time.setText("Tổng thời gian đã đi: "+intent.getStringExtra("time"));
         }
         else
             Toast.makeText(this, "There's no data at all", Toast.LENGTH_LONG).show();
@@ -196,7 +200,7 @@ public class MapContainer extends AppCompatActivity implements OnMapReadyCallbac
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("user");
-        Query query = databaseReference.child("lichtrinh").child("2").child("chitietlichtrinh").child("toado");
+        Query query = databaseReference.child("lichtrinh").child(key).child("chitietlichtrinh").child("toado");
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -213,8 +217,8 @@ public class MapContainer extends AppCompatActivity implements OnMapReadyCallbac
                         routeDraw.add(latLng);
                     }
                     mMap.addPolyline(routeDraw);
-                    mMap.addMarker(new MarkerOptions().position(cities.get(0)).title("Start"));
-                    mMap.addMarker(new MarkerOptions().position(cities.get(cities.size()-1)).title("End"));
+                    mMap.addMarker(new MarkerOptions().position(cities.get(0)).title("Bắt đầu"));
+                    mMap.addMarker(new MarkerOptions().position(cities.get(cities.size()-1)).title("Kết thúc"));
 //                    drawCircle(cities.get(0));
 //                    drawCircle(cities.get(cities.size()-1));
                     googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(cities.get(0), 13));

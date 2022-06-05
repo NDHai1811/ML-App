@@ -61,17 +61,17 @@ public class Fragment_Notify extends Fragment {
         }
         setEnterTransition(new MaterialFadeThrough());
         setExitTransition(new MaterialFadeThrough());
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view=inflater.inflate(R.layout.fragment_notify,container,false);
         ImageView imageView = view.findViewById(R.id.imageView);
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 Intent intent = new Intent(getContext(), NotifiContainer.class);
                 startActivity(intent);
             }

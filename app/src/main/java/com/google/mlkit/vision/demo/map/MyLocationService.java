@@ -9,21 +9,31 @@ import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Bundle;
 import android.os.IBinder;
 import android.os.Looper;
+import android.os.Parcelable;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 import com.google.mlkit.vision.demo.R;
+import com.google.mlkit.vision.demo.java.LivePreviewActivity;
+
+import java.io.Serializable;
+import java.util.ArrayList;
 
 public class MyLocationService extends Service {
+
+    ArrayList<LatLong> latLongs = new ArrayList<LatLong>();
+
     public MyLocationService() {
     }
 
@@ -39,34 +49,42 @@ public class MyLocationService extends Service {
             super.onLocationResult(locationResult);
             if (locationResult != null && locationResult.getLastLocation() != null) {
                 double lat = locationResult.getLastLocation().getLatitude();
-                double log = locationResult.getLastLocation().getLatitude();
+                double log = locationResult.getLastLocation().getLongitude();
+                Intent intent = new Intent("intentKey");
                 Log.d("Location", "onLocationResult: " + lat + ", " + log);
+                latLongs.add(new LatLong(lat, log));
+                intent.putExtra("lat", lat);
+                intent.putExtra("long", log);
+                LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(intent);
             }
         }
     };
 
     private void startLocationService() {
+        latLongs.removeAll(latLongs);
         String channelId = "location_notification_channel";
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        Intent resultIntent = new Intent();
+        Intent resultIntent = new Intent(getApplicationContext(), LivePreviewActivity.class);
+        resultIntent.setAction(Intent.ACTION_MAIN);
+        resultIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+        resultIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         @SuppressLint("UnspecifiedImmutableFlag") PendingIntent pendingIntent = PendingIntent.getActivity(
                     getApplicationContext(),
                     0,
                     resultIntent,
-                    PendingIntent.FLAG_MUTABLE
+                    PendingIntent.FLAG_UPDATE_CURRENT
         );
         NotificationCompat.Builder builder = new NotificationCompat.Builder(
                 getApplicationContext(),
                 channelId
         );
         builder.setSmallIcon(R.mipmap.ic_launcher);
-        builder.setContentTitle("Location Service");
+        builder.setContentTitle("Trạng thái");
         builder.setDefaults(NotificationCompat.DEFAULT_ALL);
-        builder.setContentText("Running");
+        builder.setContentText("Đang hoạt động");
         builder.setContentIntent(pendingIntent);
         builder.setAutoCancel(true);
         builder.setPriority(NotificationCompat.PRIORITY_MAX);
-
         if (notificationManager != null && notificationManager.getNotificationChannel(channelId) == null) {
             NotificationChannel notificationChannel = new NotificationChannel(
                     channelId,

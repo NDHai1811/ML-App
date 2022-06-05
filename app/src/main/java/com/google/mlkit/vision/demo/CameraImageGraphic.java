@@ -32,6 +32,6 @@ public class CameraImageGraphic extends Graphic {
 
   @Override
   public void draw(Canvas canvas) {
-    canvas.drawBitmap(bitmap, getTransformationMatrix(), null);
+//    canvas.drawBitmap(bitmap, getTransformationMatrix(), null);
   }
 }
