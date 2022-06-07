@@ -3,6 +3,26 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Admin/Desktop/ML-App/app/src/main/res/drawable-hdpi/ic_baseline_info_24.xml" value="0.2275" />
+        <entry key="..\:/Users/Admin/Desktop/ML-App/app/src/main/res/drawable-xxxhdpi/alert_sleepy.xml" value="0.257" />
+        <entry key="..\:/Users/Admin/Desktop/ML-App/app/src/main/res/drawable/bg_border.xml" value="0.257" />
+        <entry key="..\:/Users/Admin/Desktop/ML-App/app/src/main/res/layout/activity_login.xml" value="0.21784420289855072" />
+        <entry key="..\:/Users/Admin/Desktop/ML-App/app/src/main/res/layout/activity_luat_xp.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Admin/Desktop/ML-App/app/src/main/res/layout/activity_map_container.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Admin/Desktop/ML-App/app/src/main/res/layout/activity_note.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Admin/Desktop/ML-App/app/src/main/res/layout/activity_notifi_container.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Admin/Desktop/ML-App/app/src/main/res/layout/activity_settings.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Admin/Desktop/ML-App/app/src/main/res/layout/activity_splash.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Admin/Desktop/ML-App/app/src/main/res/layout/activity_test_ui.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Admin/Desktop/ML-App/app/src/main/res/layout/activity_trafficsign.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Admin/Desktop/ML-App/app/src/main/res/layout/activity_web.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Admin/Desktop/ML-App/app/src/main/res/layout/course_rv_item.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Admin/Desktop/ML-App/app/src/main/res/layout/dialog.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Admin/Desktop/ML-App/app/src/main/res/layout/dialog_sleepy.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Admin/Desktop/ML-App/app/src/main/res/layout/fragment_maps.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Admin/Desktop/ML-App/app/src/main/res/layout/fragment_notify.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Admin/Desktop/ML-App/app/src/main/res/layout/history.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Admin/Desktop/ML-App/app/src/main/res/layout/noti_detail.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/ML-App/app/src/main/res/drawable-hdpi/ic_person_white_24dp.xml" value="0.1715" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/ML-App/app/src/main/res/drawable-mdpi/layout_bg.xml" value="0.225" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/ML-App/app/src/main/res/drawable-xxxhdpi/alert_sleepy.xml" value="0.1095" />
