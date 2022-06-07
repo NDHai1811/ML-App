@@ -54,11 +54,11 @@ public class MainActivity extends AppCompatActivity {
                         fragment=new Fragment_Home();
                         Fragment_load(fragment);
                         return true;
-                    case R.id.navigation_notify:
-                        your_pos=R.id.navigation_notify;
-                        fragment=new Fragment_Notify();
-                        Fragment_load(fragment);
-                        return true;
+//                    case R.id.navigation_notify:
+//                        your_pos=R.id.navigation_notify;
+//                        fragment=new Fragment_Notify();
+//                        Fragment_load(fragment);
+//                        return true;
                     case R.id.navigation_setting:
                         your_pos=R.id.navigation_setting;
                         fragment=new Fragment_Setting();

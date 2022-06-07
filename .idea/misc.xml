@@ -3,11 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/CPC/ML-App/app/src/main/res/layout/activity_notifi_container.xml" value="0.13496376811594202" />
-        <entry key="..\:/Users/CPC/ML-App/app/src/main/res/layout/noti_detail.xml" value="0.25" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/ML-App/app/src/main/res/drawable-hdpi/ic_person_white_24dp.xml" value="0.1715" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/ML-App/app/src/main/res/drawable-mdpi/layout_bg.xml" value="0.225" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/ML-App/app/src/main/res/drawable-xxxhdpi/alert_sleepy.xml" value="0.1095" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/ML-App/app/src/main/res/drawable-xxxhdpi/circle.xml" value="0.109" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/ML-App/app/src/main/res/drawable-xxxhdpi/circle_border.xml" value="0.1095" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/ML-App/app/src/main/res/drawable-xxxhdpi/ctr_bg.xml" value="0.225" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/ML-App/app/src/main/res/drawable/bg_border.xml" value="0.1085" />
@@ -19,10 +18,10 @@
         <entry key="..\:/Users/admin/AndroidStudioProjects/ML-App/app/src/main/res/layout/activity_note.xml" value="0.21751546882436934" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/ML-App/app/src/main/res/layout/activity_notifi_container.xml" value="0.23802083333333332" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/ML-App/app/src/main/res/layout/activity_test_ui.xml" value="0.1" />
-        <entry key="..\:/Users/admin/AndroidStudioProjects/ML-App/app/src/main/res/layout/activity_vision_live_preview.xml" value="0.176" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/ML-App/app/src/main/res/layout/activity_vision_live_preview.xml" value="0.1" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/ML-App/app/src/main/res/layout/course_rv_item.xml" value="0.23802083333333332" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/ML-App/app/src/main/res/layout/dialog_sleepy.xml" value="0.151268115942029" />
-        <entry key="..\:/Users/admin/AndroidStudioProjects/ML-App/app/src/main/res/layout/fragment_home.xml" value="0.5051903114186851" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/ML-App/app/src/main/res/layout/fragment_home.xml" value="0.264" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/ML-App/app/src/main/res/layout/fragment_maps.xml" value="0.1" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/ML-App/app/src/main/res/layout/fragment_notify.xml" value="0.151268115942029" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/ML-App/app/src/main/res/layout/fragment_setting.xml" value="0.23802083333333332" />

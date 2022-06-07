@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.MediaRouteButton;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.ContextWrapper;
@@ -26,12 +27,15 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Vibrator;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -40,6 +44,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.collection.ArraySet;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -50,8 +55,11 @@ import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.tasks.Continuation;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.MultiProcessor;
 import com.google.android.gms.vision.Tracker;
@@ -127,6 +135,11 @@ public final class LivePreviewActivity extends AppCompatActivity {
   ArrayList<String> detectedTime = new ArrayList<>();
   FirebaseStorage storage;
   StorageReference storageReference;
+  String myUrl;
+  private ArrayList<String> myUrlList;
+  private ProgressBar mProgressBar;
+  private TextView loadTV;
+  int counter;
 
 
   @Override
@@ -145,6 +158,8 @@ public final class LivePreviewActivity extends AppCompatActivity {
     end_button = (ImageView)findViewById(R.id.button);
     layout = (ConstraintLayout)findViewById(R.id.llCameraView);
     cameraCV = findViewById(R.id.camera);
+    mProgressBar = findViewById(R.id.progressBar);
+    loadTV = findViewById(R.id.loadTV);
     n_mode=(ToggleButton)findViewById(R.id.toggleButton);
     n_mode.setTextOn("Máy ảnh: bật");
     n_mode.setText("Máy ảnh");
@@ -408,7 +423,7 @@ public final class LivePreviewActivity extends AppCompatActivity {
   }
 
   public void alert_box()
-  {   play_media();
+  {
     runOnUiThread(new Runnable() {
       @Override
       public void run() {
@@ -416,7 +431,7 @@ public final class LivePreviewActivity extends AppCompatActivity {
         AlertDialog dig;
         dig = new AlertDialog.Builder(LivePreviewActivity.this)
                 .setTitle("Phát hiện buồn ngủ !!!")
-                .setMessage("Hãy dừng xe, vận động cơ thể để có thể tỉnh táo tiếp tuvj hành trình")
+                .setMessage("Hãy dừng xe, vận động cơ thể để có thể tỉnh táo tiếp tục hành trình")
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                   public void onClick(DialogInterface dialog, int which) {
                     stop_playing();
@@ -482,7 +497,7 @@ public final class LivePreviewActivity extends AppCompatActivity {
     @Override
     public void onMissing(FaceDetector.Detections<Face> detectionResults) {
       mOverlay.remove(mFaceGraphic);
-      setText(tv_1,"Face Missing");
+      setText(tv_1,"Không phát hiện khuôn mặt");
 
     }
 
@@ -538,9 +553,10 @@ public final class LivePreviewActivity extends AppCompatActivity {
         {
           c = incrementer();
           alert_box();
-          takeImage();
-          detectedLocations.add(latLongs.get(latLongs.size()-1));
-          Calendar calendar = Calendar.getInstance();
+          if(latLongs.size()>0){
+            takeImage();
+            detectedLocations.add(latLongs.get(latLongs.size()-1));
+          }
           String timeDetect = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
           detectedTime.add(timeDetect);
           flag = 1;
@@ -593,14 +609,9 @@ public final class LivePreviewActivity extends AppCompatActivity {
 
   private int imgCount = 0;
   ArrayList<File> imgList = new ArrayList<>();
+  ArrayList<Uri> imgUri = new ArrayList<>();
   private void takeImage() {
     try {
-      //openCamera(CameraInfo.CAMERA_FACING_BACK);
-      //releaseCameraSource();
-      //releaseCamera();
-      //openCamera(CameraInfo.CAMERA_FACING_BACK);
-      //setUpCamera(camera);
-      //Thread.sleep(1000);
       mCameraSource.takePicture(null, new CameraSource.PictureCallback() {
 
         @Override
@@ -626,12 +637,16 @@ public final class LivePreviewActivity extends AppCompatActivity {
             OutputStream stream = null;
             stream = new FileOutputStream(file);
             rotatedBitmap.compress(Bitmap.CompressFormat.JPEG,100,stream);
+            String path = MediaStore.Images.Media.insertImage(getApplicationContext().getContentResolver(), rotatedBitmap, "Title"+imgCount, null);
+            Log.d(TAG, "onPictureTaken: "+path);
+            Uri uri = Uri.parse(path);
+            imgUri.add(uri);
+//            Log.d(TAG, "onPictureTaken: "+imgUri.get(imgUri.size()));
             stream.flush();
             stream.close();
-            imgList.add(file);
             Toast.makeText(getApplicationContext(), "Captured!", Toast.LENGTH_LONG).show();
-            Log.d(TAG, "onPictureTaken: "+imgList);
           } catch (Exception e) {
+            Log.d(TAG, "Fail");
             e.printStackTrace();
           }
         }
@@ -727,11 +742,7 @@ public final class LivePreviewActivity extends AppCompatActivity {
                 } catch (IOException e) {
                   e.printStackTrace();
                 }
-                detectedLocations.forEach((i)-> Log.d(TAG, "onClick: "+i.getLongitude()));
-                for (String i:detectedTime
-                     ) {
-                  Log.d(TAG, "onClick: "+i);
-                }
+//                LivePreviewActivity.this.finish();
               }
             })
             .setNegativeButton("Không", new DialogInterface.OnClickListener() {
@@ -745,22 +756,29 @@ public final class LivePreviewActivity extends AppCompatActivity {
 
   private void createHistory() throws IOException {
     geocoder = new Geocoder(this, Locale.getDefault());
-    start = geocoder.getFromLocation(latLongs.get(0).getLatitude(), latLongs.get(0).getLongitude(), 1);
-    end = geocoder.getFromLocation(latLongs.get(latLongs.size()-1).getLatitude(), latLongs.get(latLongs.size()-1).getLongitude(), 1);
+    String startPoint = null;
+    String endPoint = null;
 
-    String startPoint = start.get(0).getAddressLine(0);
-    String endPoint = end.get(0).getAddressLine(0);
+    if(latLongs.size()>0) {
+      start = geocoder.getFromLocation(latLongs.get(0).getLatitude(), latLongs.get(0).getLongitude(), 1);
+      end = geocoder.getFromLocation(latLongs.get(latLongs.size() - 1).getLatitude(), latLongs.get(latLongs.size() - 1).getLongitude(), 1);
+      startPoint = start.get(0).getAddressLine(0);
+      endPoint = end.get(0).getAddressLine(0);
+    }
+
     String date = new SimpleDateFormat("dd-MM-yyyy hh:mm aa", Locale.getDefault()).format(new Date());
 
     DatabaseReference lichtrinh = databaseReference.child("lichtrinh");
     String key = lichtrinh.push().getKey();
+    String finalStartPoint = startPoint;
+    String finalEndPoint = endPoint;
     lichtrinh.addListenerForSingleValueEvent(new ValueEventListener() {
       @Override
       public void onDataChange(@NonNull DataSnapshot snapshot) {
         Log.d(TAG, "onChildAdded: "+snapshot.getChildrenCount());
         lichtrinh.child(key).child("tieude").setValue("Lịch trình "+(snapshot.getChildrenCount()));
-        lichtrinh.child(key).child("batdau").setValue(startPoint);
-        lichtrinh.child(key).child("ketthuc").setValue(endPoint);
+        lichtrinh.child(key).child("batdau").setValue(finalStartPoint);
+        lichtrinh.child(key).child("ketthuc").setValue(finalEndPoint);
         lichtrinh.child(key).child("thoigian").setValue(clock.getText());
         lichtrinh.child(key).child("ngaythang").setValue(date);
       }
@@ -772,53 +790,49 @@ public final class LivePreviewActivity extends AppCompatActivity {
     });
 
 
-
+    storage = FirebaseStorage.getInstance();
+    storageReference = storage.getReference();
     DatabaseReference chitietlichtrinh = lichtrinh.child(key).child("chitietlichtrinh");
     chitietlichtrinh.child("toado").setValue(latLongs);
     if (detectedLocations != null){
-      detectedLocations.forEach((i)->chitietlichtrinh.child("diadiemphathien").setValue(i));
-      detectedTime.forEach((j)->chitietlichtrinh.child("taithoidiem").setValue(j));
-    }
-    storage = FirebaseStorage.getInstance();
-    storageReference = storage.getReference();
-    StorageReference stoRef = storageReference.child("images/" + UUID.randomUUID().toString());
-    if(imgList!=null) {
-      for (int i = 0; i < imgList.size() - 1; i++) {
-        stoRef.putFile(Uri.parse(imgList.get(i).toURI().toString())).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-          @Override
-          public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-            stoRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-              @Override
-              public void onSuccess(Uri uri) {
-                chitietlichtrinh.child("imageURI").setValue(uri);
-              }
-            });
-            Toast
-                    .makeText(LivePreviewActivity.this,
-                            "Image Uploaded!!",
-                            Toast.LENGTH_SHORT)
-                    .show();
-          }
-        }).addOnFailureListener(new OnFailureListener() {
-          @Override
-          public void onFailure(@NonNull Exception e) {
-            Toast
-                    .makeText(LivePreviewActivity.this,
-                            "Failed " + e.getMessage(),
-                            Toast.LENGTH_SHORT)
-                    .show();
-          }
-        }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-          @Override
-          public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
-
-          }
-        });
-      }
-      LivePreviewActivity.this.finish();
+        uploadImageToFirebaseStorage(imgUri, storageReference, chitietlichtrinh);
     }
 
-    Log.d(TAG, "createHistory: "+key);
+//      for (int i = 0; i < imgUri.size(); i++) {
+//        stoRef.putFile(imgUri.get(i)).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+//          @Override
+//          public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+//            stoRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+//              @Override
+//              public void onSuccess(Uri uri) {
+//                chitietlichtrinh.child("imageURI").setValue(uri);
+//              }
+//            });
+//            Toast
+//                    .makeText(LivePreviewActivity.this,
+//                            "Image Uploaded!!",
+//                            Toast.LENGTH_SHORT)
+//                    .show();
+//          }
+//        }).addOnFailureListener(new OnFailureListener() {
+//          @Override
+//          public void onFailure(@NonNull Exception e) {
+//            Toast
+//                    .makeText(LivePreviewActivity.this,
+//                            "Failed " + e.getMessage(),
+//                            Toast.LENGTH_SHORT)
+//                    .show();
+//          }
+//        }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+//          @Override
+//          public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
+//
+//          }
+//        });
+    Log.d(TAG, "createHistory: "+imgUri.size());
+
+
+//    Log.d(TAG, "createHistory: "+key);
   }
 
   private void startClock(){
@@ -855,6 +869,68 @@ public final class LivePreviewActivity extends AppCompatActivity {
     };
 
     t.start();
+  }
+
+  private void uploadImageToFirebaseStorage(ArrayList<Uri> imageUriList, StorageReference storageReference, DatabaseReference databaseReference) {
+    if (imageUriList.size() > 0) {
+      mProgressBar.setVisibility(View.VISIBLE);
+      loadTV.setVisibility(View.VISIBLE);
+      getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+              WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+      Uri imageUri = imageUriList.get(0);
+      StorageReference ref = storageReference.child("images/" + UUID.randomUUID().toString());
+      ref.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+        @Override
+        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+          ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+              Uri downloadUrl = uri;
+              Log.d(TAG, "onSuccess: " + downloadUrl);
+              String ltKey = databaseReference.push().getKey();
+              databaseReference.child(ltKey).child("diadiemphathien").setValue(detectedLocations.get(counter));
+              databaseReference.child(ltKey).child("taithoidiem").setValue(detectedTime.get(counter));
+              databaseReference.child(ltKey).child("hinhanhUrl").setValue(downloadUrl.toString());
+              //Do what you want with the url
+            }
+          });
+        }
+      }).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+        @Override
+        public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+          if (task.isSuccessful()) {
+            imageUriList.remove(0);
+            counter++;
+            uploadImageToFirebaseStorage(imageUriList, storageReference, databaseReference); //Call when completes
+          }
+        }
+      });
+//      UploadTask uploadTask = storageReference.child(UUID.randomUUID().toString()).putFile(imageUri);
+//      uploadTask.continueWithTask(new Continuation() {
+//        @Override
+//        public Object then(@NonNull Task task) throws Exception {
+//          if(!task.isSuccessful()){
+//            throw task.getException();
+//          }
+//          return storageReference.getDownloadUrl();
+//        }
+//      }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+//        @Override
+//        public void onComplete(@NonNull Task<Uri> task) {
+//          if (task.isSuccessful()) {
+//            imageUriList.remove(0);
+////            Log.d(TAG, "onComplete: "+task.getResult());
+//            uploadImageToFirebaseStorage(imageUriList, storageReference, databaseReference); //Call when completes
+////            }
+//          }
+//        }
+//      });
+    }
+    else {
+      mProgressBar.setVisibility(View.GONE);
+      loadTV.setVisibility(View.GONE);
+      LivePreviewActivity.this.finish();
+    }
   }
 }
 
