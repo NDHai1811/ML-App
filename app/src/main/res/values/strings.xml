@@ -13,6 +13,11 @@
     <string name="start_over">Start over</string>
     <string name="menu_item_settings">Settings</string>
     <string name="select_image">Select image</string>
+    <string name="web_client_id">694406460530-76qb9eu47uq5qk2vbgvh317679frkl6o.apps.googleusercontent.com</string>
+
+    <string name="facebook_app_id">439559974279919</string>
+    <string name="fb_login_protocol_scheme">fb1234</string>
+    <string name="facebook_client_token">56789</string>
 
     <!-- Settings related strings. -->
     <string name="pref_screen_title_live_preview">Cài đặt</string>
@@ -82,7 +87,7 @@ Tỷ lệ giữa chiều rộng phần đầu với chiều rộng hình ảnh v
 
 
     <string name="edit_text_preference_1">test</string>
-    <string name="duration_update_info">Cài đặt thời gian cập nhật vị trí</string>
+    <string name="duration_update_info">Cài đặt độ nhạy</string>
     <string name="key_duration_update_info">dui</string>
 
 

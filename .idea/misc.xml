@@ -30,25 +30,35 @@
         <entry key="..\:/Users/admin/AndroidStudioProjects/ML-App/app/src/main/res/drawable-xxxhdpi/circle_border.xml" value="0.1095" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/ML-App/app/src/main/res/drawable-xxxhdpi/ctr_bg.xml" value="0.225" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/ML-App/app/src/main/res/drawable/bg_border.xml" value="0.1085" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/ML-App/app/src/main/res/drawable/circle.xml" value="0.2105" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/ML-App/app/src/main/res/drawable/img.xml" value="0.2105" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/ML-App/app/src/main/res/layout-land/activity_vision_live_preview.xml" value="0.2" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/ML-App/app/src/main/res/layout/activity_generate_token.xml" value="0.1157548125633232" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/ML-App/app/src/main/res/layout/activity_home_page_web_view.xml" value="0.1484375" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/ML-App/app/src/main/res/layout/activity_login.xml" value="0.23802083333333332" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/ML-App/app/src/main/res/layout/activity_luat_xp.xml" value="0.23802083333333332" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/ML-App/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/ML-App/app/src/main/res/layout/activity_map_container.xml" value="0.1" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/ML-App/app/src/main/res/layout/activity_note.xml" value="0.21751546882436934" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/ML-App/app/src/main/res/layout/activity_notifi_container.xml" value="0.23802083333333332" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/ML-App/app/src/main/res/layout/activity_register.xml" value="0.1140625" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/ML-App/app/src/main/res/layout/activity_test_ui.xml" value="0.1" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/ML-App/app/src/main/res/layout/activity_vision_live_preview.xml" value="0.1" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/ML-App/app/src/main/res/layout/activity_web.xml" value="0.1484375" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/ML-App/app/src/main/res/layout/course_rv_item.xml" value="0.23802083333333332" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/ML-App/app/src/main/res/layout/dialog_sleepy.xml" value="0.151268115942029" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/ML-App/app/src/main/res/layout/fragment_home.xml" value="0.264" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/ML-App/app/src/main/res/layout/fragment_maps.xml" value="0.1" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/ML-App/app/src/main/res/layout/fragment_notify.xml" value="0.151268115942029" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/ML-App/app/src/main/res/layout/fragment_profile.xml" value="0.2" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/ML-App/app/src/main/res/layout/fragment_setting.xml" value="0.23802083333333332" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/ML-App/app/src/main/res/layout/history.xml" value="0.176" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/ML-App/app/src/main/res/layout/luatxp.xml" value="0.23802083333333332" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/ML-App/app/src/main/res/layout/noti_detail.xml" value="0.23802083333333332" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/ML-App/app/src/main/res/layout/notify.xml" value="0.1140625" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/ML-App/app/src/main/res/layout/realtime_info.xml" value="0.23802083333333332" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/ML-App/app/src/main/res/menu/navigation.xml" value="0.1" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/ML-App/app/src/main/res/xml/preference_live_preview_quickstart.xml" value="0.23802083333333332" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/TaxiHelper/app/src/main/res/drawable-hdpi/ic_store_white_24dp.xml" value="0.13333333333333333" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/TaxiHelper/app/src/main/res/drawable-xxxhdpi/alertSleepy.xml" value="0.132" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/TaxiHelper/app/src/main/res/drawable-xxxhdpi/alert_sleepy.xml" value="0.1105" />

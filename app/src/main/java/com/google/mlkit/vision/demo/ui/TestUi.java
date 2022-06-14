@@ -1,7 +1,9 @@
 package com.google.mlkit.vision.demo.ui;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -60,6 +62,7 @@ public class TestUi extends AppCompatActivity {
     Bitmap icon;
     int position;
     TextView info;
+    String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +70,8 @@ public class TestUi extends AppCompatActivity {
         getSupportActionBar().setTitle("Lịch trình");
         setContentView(R.layout.activity_test_ui);
 
-//        init();
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
+        id = sharedPreferences.getString("id", null);
 
         info = findViewById(R.id.textView5);
         historyRV = findViewById(R.id.historyRV);
@@ -78,7 +82,7 @@ public class TestUi extends AppCompatActivity {
         linearLayoutManager.setStackFromEnd(true);
         this.historyRV.setLayoutManager(linearLayoutManager);
         this.historyRV.setAdapter(adapter);
-        dao = new DAOHistory();
+        dao = new DAOHistory(this);
 //        loadData();
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
         itemTouchHelper.attachToRecyclerView(this.historyRV);
@@ -142,34 +146,6 @@ public class TestUi extends AppCompatActivity {
                         moving = true;
                     }
                 }
-//                if (dX > 0) {
-//                    Paint p = new Paint();
-//                    p.setColor(Color.GREEN);
-//                    float editButtonLeft = itemView.getLeft() + itemView.getPaddingLeft();
-//                    float editButtonTop = itemView.getTop();
-//                    float editButtonRight = itemView.getLeft() + (itemView.getRight() / 5f);
-//                    float editButtonBottom = itemView.getBottom();
-//
-//                    // Draw a button
-//                    float radius = 15f;
-//                    float margin = (dX / 5 - width) / 2;
-//                    RectF editButtonEdit = new RectF(editButtonLeft, editButtonTop, editButtonRight, editButtonBottom);
-//                    c.drawRoundRect(editButtonEdit, radius, radius, p);
-//                    icon = BitmapFactory.decodeResource(getResources(), R.drawable.edit);
-//
-//                    if(margin<0)
-//                        margin=0;
-//                    RectF iconDest = new RectF(editButtonEdit.left+margin, itemView.getTop() + width, editButtonEdit.right-margin, itemView.getBottom() - width);
-//                    c.drawBitmap(icon, null, iconDest, p);
-//                    if (dX > editButtonRight) {
-//                        editButtonVisible = true;
-//                        deleteButtonVisible = false;
-//                        moving = false;
-//                    } else {
-//                        editButtonVisible = false;
-//                        moving = true;
-//                    }
-//                }
                 if (dX == 0.0f)
                     moving = false;
             }
@@ -178,70 +154,6 @@ public class TestUi extends AppCompatActivity {
             }
             if (deleteButtonVisible)
                 clickDeleteButtonListener(recyclerView, posSwiped);
-
-
-//            posSwiped = viewHolder.getAbsoluteAdapterPosition();
-//
-//            Log.d("dX", ""+dX);
-//            Log.d("Item postion", ""+posSwiped);
-//            View view = viewHolder.itemView;
-//
-//            Paint paint = new Paint();
-//            paint.setColor(getResources().getColor(R.color.colorAccent));
-//            paint.setTextSize(30f);
-//            paint.setAntiAlias( true);
-//
-//            // Fix position for button
-//            float deleteButtonLeft = view.getRight() - (view.getRight() / 5f);
-//            float deleteButtonTop = view.getTop();
-//            float deleteButtonRight = view.getRight() - view.getPaddingRight();
-//            float deleteButtonBottom = view.getBottom();
-//
-//            Log.d("Delete Button Left X", ""+deleteButtonLeft);
-//
-//            // Draw a button
-//            float radius = 15f;
-//            RectF deleteButtonDelete = new RectF(deleteButtonLeft, deleteButtonTop, deleteButtonRight, deleteButtonBottom);
-//            c.drawRoundRect(deleteButtonDelete, radius, radius, paint);
-//
-//            // Set color for draw text inside button
-//            paint.setColor(getResources().getColor(R.color.white));
-//
-//            // Button text
-//            String textButton = "Delete";
-//
-//            // Get width, height of button text
-//            Rect rect = new Rect();
-//            paint.getTextBounds(textButton, 0, textButton.length(), rect);
-//
-//            c.drawText(
-//                    "Delete",
-//                    deleteButtonDelete.centerX() - rect.width() / 2f,
-//                    deleteButtonDelete.centerY() + rect.height() / 2f,
-//                    paint
-//            );
-//
-//            // dX of item run from 0 to `-X` width of screen
-//
-//            if (dX <= - deleteButtonLeft) {
-//                deleteButtonVisible = true;
-//                moving = false;
-//            } else
-//            {
-//                deleteButtonVisible = false;
-//                moving = true;
-//            }
-//
-//            if (dX == 0.0f)
-//                moving = false;
-//
-//            Log.d("Moving", "$moving");
-//            Log.d("Button Visible", ""+deleteButtonVisible);
-//
-//            // Check button ís visible
-//            Toast.makeText(getApplicationContext(), "Click to Button", Toast.LENGTH_SHORT).show();
-//            if (deleteButtonVisible)
-//                clickDeleteButtonListener(recyclerView, posSwiped);
             super.onChildDraw(c, recyclerView, viewHolder, dX / 5, dY, actionState, isCurrentlyActive);
         }
 
@@ -276,7 +188,7 @@ public class TestUi extends AppCompatActivity {
 
                                             String key = list.get(posSwiped).getKey();
                                             DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
-                                            ref.child("user").child("lichtrinh").child(key).removeValue();
+                                            ref.child("user").child(id).child("lichtrinh").child(key).removeValue();
 
                                             list.remove(posSwiped);
 
@@ -310,31 +222,31 @@ public class TestUi extends AppCompatActivity {
         }
     }
 
-    public void init() {
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference("user");
-        Query query = databaseReference.child("lichtrinh");
-        query.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                JSONObject data = new JSONObject();
-                History history = null;
-                if (snapshot.exists()) {
-                    for(DataSnapshot element : snapshot.getChildren()) {
-                        String txt = element.getValue(History.class).getBatdau();
-//                        list.add(new History(element.getValue(History.class).getTieude(), element.getValue(History.class).getBatdau(), element.getValue(History.class).getKetthuc(), element.getValue(History.class).getThoigian()));
-                        Log.d("TestUi", "onDataChange: "+txt);
-                    }
-//                    Log.d("TestUi", "onDataChange: "+history);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-    }
+//    public void init() {
+//        firebaseDatabase = FirebaseDatabase.getInstance();
+//        databaseReference = firebaseDatabase.getReference("user");
+//        Query query = databaseReference.child("lichtrinh");
+//        query.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                JSONObject data = new JSONObject();
+//                History history = null;
+//                if (snapshot.exists()) {
+//                    for(DataSnapshot element : snapshot.getChildren()) {
+//                        String txt = element.getValue(History.class).getBatdau();
+////                        list.add(new History(element.getValue(History.class).getTieude(), element.getValue(History.class).getBatdau(), element.getValue(History.class).getKetthuc(), element.getValue(History.class).getThoigian()));
+//                        Log.d("TestUi", "onDataChange: "+txt);
+//                    }
+////                    Log.d("TestUi", "onDataChange: "+history);
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+//    }
 
     private void loadData()
     {

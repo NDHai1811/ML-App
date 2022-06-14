@@ -1,19 +1,26 @@
 package com.google.mlkit.vision.demo.history;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.mlkit.vision.demo.java.LivePreviewActivity;
 
 import java.util.HashMap;
 
 public class DAOHistory
 {
+    String id;
     private DatabaseReference databaseReference;
-    public DAOHistory()
+    public DAOHistory(Context context)
     {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
+        id = sharedPreferences.getString("id", null);
         FirebaseDatabase db =FirebaseDatabase.getInstance();
-        databaseReference = db.getReference("user/lichtrinh");
+        databaseReference = db.getReference("user").child(id).child("lichtrinh");
     }
     public Task<Void> add(History his)
     {

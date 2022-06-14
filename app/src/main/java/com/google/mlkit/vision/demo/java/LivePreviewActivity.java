@@ -12,6 +12,8 @@ import android.content.ContextWrapper;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -81,6 +83,7 @@ import com.google.mlkit.vision.demo.GraphicOverlay;
 import com.google.mlkit.vision.demo.R;
 import com.google.mlkit.vision.demo.map.LatLong;
 import com.google.mlkit.vision.demo.map.MyLocationService;
+import com.google.mlkit.vision.demo.preference.PreferenceUtils;
 import com.google.mlkit.vision.demo.ui.MainActivity;
 
 import java.io.File;
@@ -94,6 +97,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
+import java.util.Random;
 import java.util.UUID;
 
 
@@ -119,13 +123,13 @@ public final class LivePreviewActivity extends AppCompatActivity {
 
   private static final int RC_HANDLE_CAMERA_PERM = 2;
   public int flag = 0;
-
+  public String id;
   private CardView cameraCV;
   Vibrator vibrator;
   private static final int PERMISSION_REQUESTS = 1;
   ArrayList<LatLong> latLongs = new ArrayList<>();
   FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-  DatabaseReference databaseReference = firebaseDatabase.getReference("user");
+  DatabaseReference databaseReference;
   Geocoder geocoder;
   private List<Address> start;
   private List<Address> end;
@@ -140,6 +144,8 @@ public final class LivePreviewActivity extends AppCompatActivity {
   private ProgressBar mProgressBar;
   private TextView loadTV;
   int counter;
+  private float eyesWidth;
+  private int duration;
 
 
   @Override
@@ -153,6 +159,13 @@ public final class LivePreviewActivity extends AppCompatActivity {
     getWindow().setStatusBarColor(Color.TRANSPARENT);
     super.onCreate(icicle);
     setContentView(R.layout.activity_vision_live_preview);
+
+    SharedPreferences sharedPreferences = getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
+    id = sharedPreferences.getString("id", null);
+    eyesWidth = PreferenceUtils.getEyeRatio(this);
+    duration = PreferenceUtils.getDuration(this);
+    databaseReference = firebaseDatabase.getReference("user").child(id);
+    Log.d(TAG, "onCreate: "+id);
     mPreview = (CameraSourcePreview) findViewById(R.id.preview);
     mGraphicOverlay = (GraphicOverlay) findViewById(R.id.faceOverlay);
     end_button = (ImageView)findViewById(R.id.button);
@@ -242,14 +255,19 @@ public final class LivePreviewActivity extends AppCompatActivity {
       }
     });
 
-
-
-    int rc = ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA);
-    if (rc == PackageManager.PERMISSION_GRANTED) {
+    //check permission - if granted, do detect
+    if (allPermissionsGranted()) {
       createCameraSource();
     } else {
-      requestCameraPermission();
+      getRuntimePermissions();
     }
+
+//    int rc = ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA);
+//    if (rc == PackageManager.PERMISSION_GRANTED) {
+//      createCameraSource();
+//    } else {
+//      requestCameraPermission();
+//    }
 
     if(ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
       ActivityCompat.requestPermissions(
@@ -260,6 +278,8 @@ public final class LivePreviewActivity extends AppCompatActivity {
     }
 
     LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver, new IntentFilter("intentKey"));
+
+
   }
 
   private void requestCameraPermission() {
@@ -410,7 +430,7 @@ public final class LivePreviewActivity extends AppCompatActivity {
   public void play_media()
   {
     stop_playing();
-    mp = MediaPlayer.create(this, R.raw.rickroll);
+    mp = MediaPlayer.create(this, R.raw.alarm);
     mp.start();
   }
   public void stop_playing()
@@ -422,6 +442,12 @@ public final class LivePreviewActivity extends AppCompatActivity {
     }
   }
 
+  String[] advice = {"Hãy dừng xe an toàn và ngủ một giấc trước khi tiếp tục hành trình nếu như thấy quá mệt",
+          "Bạn có đang đi cùng ai không, nếu được, hãy để người đó thay bạn lái xe",
+          "Đừng vội vàng cố gắng đến đích lúc này. Tốt hơn hết là hãy tìm một bến đõ an toàn và nghỉ ngơi",
+          "Uống cà phê và ăn một chút trước khi tiếp tục",
+          "Mở cửa sổ hoặc bật điều hoà, sau đó bật nhạc lên"
+  };
   public void alert_box()
   {
     runOnUiThread(new Runnable() {
@@ -429,10 +455,12 @@ public final class LivePreviewActivity extends AppCompatActivity {
       public void run() {
         play_media();
         AlertDialog dig;
+        int rnd = new Random().nextInt(advice.length);
+        String ad = advice[rnd];
         dig = new AlertDialog.Builder(LivePreviewActivity.this)
                 .setTitle("Phát hiện buồn ngủ !!!")
-                .setMessage("Hãy dừng xe, vận động cơ thể để có thể tỉnh táo tiếp tục hành trình")
-                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                .setMessage(ad)
+                .setPositiveButton("Tiếp tục", new DialogInterface.OnClickListener() {
                   public void onClick(DialogInterface dialog, int which) {
                     stop_playing();
                     flag = 0;
@@ -511,13 +539,13 @@ public final class LivePreviewActivity extends AppCompatActivity {
         @Override
         public void run() {
           text.setText(value);
-          if (value == "Face Missing"){
+          if (value == "Không phát hiện khuôn mặt"){
             text.setTextColor(Color.YELLOW);
           }
-          if (value == "Sleepy"){
+          if (value == "Mệt mỏi"){
             text.setTextColor(Color.parseColor("#fcba03"));
           }
-          if (value == "Drowsy"){
+          if (value == "Buồn ngủ"){
             text.setTextColor(Color.RED);
           }
         }
@@ -528,7 +556,9 @@ public final class LivePreviewActivity extends AppCompatActivity {
     {
       float l = face.getIsLeftEyeOpenProbability();
       float r = face.getIsRightEyeOpenProbability();
-      if(l<0.50 && r<0.50)
+      float x = face.getEulerX();
+      float y = face.getEulerY();
+      if(l<eyesWidth && r<eyesWidth)
       {
         state_i = 0;
       }
@@ -542,16 +572,14 @@ public final class LivePreviewActivity extends AppCompatActivity {
         if(state_f==0)
         {
           c = incrementer_1();
-
         }
         end = start;
         stop = System.currentTimeMillis();
       }
       else if (state_i == 0 && state_f ==0 ) {
         begin = System.currentTimeMillis();
-        if(begin - stop > s_time )
+        if(begin - stop > duration || x < -15 || x > 18 || y < -30 || y > 30)
         {
-          c = incrementer();
           alert_box();
           if(latLongs.size()>0){
             takeImage();
@@ -797,42 +825,8 @@ public final class LivePreviewActivity extends AppCompatActivity {
     if (detectedLocations != null){
         uploadImageToFirebaseStorage(imgUri, storageReference, chitietlichtrinh);
     }
-
-//      for (int i = 0; i < imgUri.size(); i++) {
-//        stoRef.putFile(imgUri.get(i)).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-//          @Override
-//          public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//            stoRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-//              @Override
-//              public void onSuccess(Uri uri) {
-//                chitietlichtrinh.child("imageURI").setValue(uri);
-//              }
-//            });
-//            Toast
-//                    .makeText(LivePreviewActivity.this,
-//                            "Image Uploaded!!",
-//                            Toast.LENGTH_SHORT)
-//                    .show();
-//          }
-//        }).addOnFailureListener(new OnFailureListener() {
-//          @Override
-//          public void onFailure(@NonNull Exception e) {
-//            Toast
-//                    .makeText(LivePreviewActivity.this,
-//                            "Failed " + e.getMessage(),
-//                            Toast.LENGTH_SHORT)
-//                    .show();
-//          }
-//        }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-//          @Override
-//          public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
-//
-//          }
-//        });
     Log.d(TAG, "createHistory: "+imgUri.size());
 
-
-//    Log.d(TAG, "createHistory: "+key);
   }
 
   private void startClock(){
@@ -905,32 +899,60 @@ public final class LivePreviewActivity extends AppCompatActivity {
           }
         }
       });
-//      UploadTask uploadTask = storageReference.child(UUID.randomUUID().toString()).putFile(imageUri);
-//      uploadTask.continueWithTask(new Continuation() {
-//        @Override
-//        public Object then(@NonNull Task task) throws Exception {
-//          if(!task.isSuccessful()){
-//            throw task.getException();
-//          }
-//          return storageReference.getDownloadUrl();
-//        }
-//      }).addOnCompleteListener(new OnCompleteListener<Uri>() {
-//        @Override
-//        public void onComplete(@NonNull Task<Uri> task) {
-//          if (task.isSuccessful()) {
-//            imageUriList.remove(0);
-////            Log.d(TAG, "onComplete: "+task.getResult());
-//            uploadImageToFirebaseStorage(imageUriList, storageReference, databaseReference); //Call when completes
-////            }
-//          }
-//        }
-//      });
     }
     else {
       mProgressBar.setVisibility(View.GONE);
       loadTV.setVisibility(View.GONE);
       LivePreviewActivity.this.finish();
     }
+  }
+
+
+  private void getRuntimePermissions() {
+    List<String> allNeededPermissions = new ArrayList<>();
+    for (String permission : getRequiredPermissions()) {
+      if (!isPermissionGranted(this, permission)) {
+        allNeededPermissions.add(permission);
+      }
+    }
+
+    if (!allNeededPermissions.isEmpty()) {
+      ActivityCompat.requestPermissions(
+              this, allNeededPermissions.toArray(new String[0]), PERMISSION_REQUESTS);
+    }
+  }
+
+  private String[] getRequiredPermissions() {
+    try {
+      PackageInfo info =
+              this.getPackageManager()
+                      .getPackageInfo(this.getPackageName(), PackageManager.GET_PERMISSIONS);
+      String[] ps = info.requestedPermissions;
+      if (ps != null && ps.length > 0) {
+        return ps;
+      } else {
+        return new String[0];
+      }
+    } catch (Exception e) {
+      return new String[0];
+    }
+  }
+  private static boolean isPermissionGranted(Context context, String permission) {
+    if (ContextCompat.checkSelfPermission(context, permission)
+            == PackageManager.PERMISSION_GRANTED) {
+      Log.i(TAG, "Permission granted: " + permission);
+      return true;
+    }
+    Log.i(TAG, "Permission NOT granted: " + permission);
+    return false;
+  }
+  private boolean allPermissionsGranted() {
+    for (String permission : getRequiredPermissions()) {
+      if (!isPermissionGranted(this, permission)) {
+        return false;
+      }
+    }
+    return true;
   }
 }
 

@@ -12,17 +12,20 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.transition.MaterialFadeThrough;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.google.mlkit.vision.demo.NotifiContainer;
 import com.google.mlkit.vision.demo.R;
 import com.google.mlkit.vision.demo.history.History;
 import com.google.mlkit.vision.demo.java.LivePreviewActivity;
 import com.google.mlkit.vision.demo.map.MapContainer;
 import com.google.mlkit.vision.demo.notification.GenerateTokenActivity;
+import com.google.mlkit.vision.demo.web.HomePageWebView;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -111,7 +114,7 @@ public class Fragment_Home extends Fragment {
             @Override
             public void onClick(View v)
             {
-                Intent intent = new Intent(getActivity(), MapContainer.class);
+                Intent intent = new Intent(getActivity(), HomePageWebView.class);
                 startActivity(intent);
 //                Toast.makeText(getContext(), "Đang trong quá trình phát triển", Toast.LENGTH_LONG).show();
             }
@@ -129,6 +132,14 @@ public class Fragment_Home extends Fragment {
             }
         });
 
+        ImageView img1=view.findViewById(R.id.bell);
+        img1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), NotifiContainer.class);
+                startActivity(intent);
+            }
+        });
         // Inflate the layout for this fragment
         return view;
     }

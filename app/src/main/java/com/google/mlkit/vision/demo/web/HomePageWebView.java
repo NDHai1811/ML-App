@@ -10,27 +10,22 @@ import android.view.View;
 import android.view.Window;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceRequest;
-import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
 import com.google.mlkit.vision.demo.R;
 
-public class WebActivity extends AppCompatActivity {
+public class HomePageWebView extends AppCompatActivity {
 
     WebView webView;
     ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getSupportActionBar().setTitle("Tra cứu phạt nguội");
-        ColorDrawable colorDrawable
-                = new ColorDrawable(Color.parseColor("#02457A"));
-        getSupportActionBar().setBackgroundDrawable(colorDrawable);
+        getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_web);
+        setContentView(R.layout.activity_home_page_web_view);
         progressBar = findViewById(R.id.progressBar);
 
         webView = findViewById(R.id.webView);
@@ -64,7 +59,7 @@ public class WebActivity extends AppCompatActivity {
                 progressBar.setVisibility(View.GONE);
             }
         });
-        webView.loadUrl("https://phatnguoi.com/");
+        webView.loadUrl("https://google.com/");
         webView.getSettings().setBuiltInZoomControls(false);
         webView.getSettings().setSupportZoom(true);
         webView.getSettings().setJavaScriptEnabled(true);

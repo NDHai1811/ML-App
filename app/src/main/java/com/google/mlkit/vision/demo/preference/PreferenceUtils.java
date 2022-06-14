@@ -140,7 +140,7 @@ public class PreferenceUtils {
             getModeTypePreferenceValue(
                     context,
                     R.string.key_duration_update_info,
-                    5000);
+                    1500);
     Log.d("Handler", "getDuration: "+duration);
     return duration;
   }
@@ -151,7 +151,7 @@ public class PreferenceUtils {
             Float.parseFloat(
                     sharedPreferences.getString(
                             context.getString(R.string.edit_text_preference_1),
-                            "0.99"));
+                            "0.50"));
     Log.d("Thu", "getFaceDetectorOptionsForLivePreview: "+eyeWidth);
     return eyeWidth;
   }

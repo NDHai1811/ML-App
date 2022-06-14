@@ -42,12 +42,13 @@ public class trafficsign extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         ColorDrawable colorDrawable
                 = new ColorDrawable(Color.parseColor("#02457A"));
         getSupportActionBar().setBackgroundDrawable(colorDrawable);
         getSupportActionBar().setTitle("Tra cứu biển báo");
+        super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_trafficsign);
 
         // initializing our variables.

@@ -173,7 +173,7 @@ public class LivePreviewPreferenceFragment extends PreferenceFragment {
       wtf.setOnPreferenceChangeListener((preference, newValue) -> {
           try {
               float eyeWidth = Float.parseFloat((String) newValue);
-              if (eyeWidth<=0.99f && eyeWidth>=0.65f){
+              if (eyeWidth<=0.99f && eyeWidth>=0.35f){
                   wtf.setSummary((String) newValue);
                   Log.d("Thu 1", "setUpFaceDetectionPreferences: "+newValue);
                   return true;
@@ -185,7 +185,7 @@ public class LivePreviewPreferenceFragment extends PreferenceFragment {
 
           Log.d("Thu 2", "setUpFaceDetectionPreferences: "+newValue);
           Toast.makeText(
-                  getActivity(), "Độ mở của mắt phù hợp phải từ 0.65 đến 0.99", Toast.LENGTH_LONG)
+                  getActivity(), "Độ mở của mắt phù hợp phải từ 0.35 đến 0.99", Toast.LENGTH_LONG)
                   .show();
           return false;
       });

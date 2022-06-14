@@ -7,6 +7,7 @@ import androidx.core.app.ActivityCompat;
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.Rect;
@@ -66,6 +67,8 @@ public class MapContainer extends AppCompatActivity implements OnMapReadyCallbac
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     ProgressBar progressBar;
+    private String id;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -198,8 +201,10 @@ public class MapContainer extends AppCompatActivity implements OnMapReadyCallbac
             }
         });
 
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
+        id = sharedPreferences.getString("id", null);
         firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference("user");
+        databaseReference = firebaseDatabase.getReference("user").child(id);
         Query query = databaseReference.child("lichtrinh").child(key).child("chitietlichtrinh").child("toado");
         query.addValueEventListener(new ValueEventListener() {
             @Override
